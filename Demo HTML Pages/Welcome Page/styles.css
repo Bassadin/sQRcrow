@@ -3,19 +3,25 @@ body {
 }
 
 h1, h2, h3, p {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Concert One', cursive;
 }
 
 h1 {
+    font-size: 25pt;
+}
+
+h2 {
     font-size: 20pt;
 }
 
 p {
     margin: 40px 0;
+    font-family: "Roboto", sans-serif;
 }
 
 a {
     text-decoration: none;
+    color: unset;
 }
 
 /* HEADER */
@@ -25,14 +31,14 @@ header {
     display: flex;
     align-items: center;
     padding-left: 25px;
-    box-shadow: 0 -15px 22px 30px rgba(0,0,0,0.75);
+    box-shadow: 0 -15px 22px 30px rgba(0, 0, 0, 0.75);
     z-index: 100;
     color: white;
 }
 
 header i {
     vertical-align: center;
-    font-size: 20pt;
+    font-size: 25pt;
     margin-right: 15px;
 }
 
@@ -58,11 +64,17 @@ footer {
 }
 
 footer a {
-    color: white;
+    color: lightgoldenrodyellow;
     font-size: 2.5rem;
     display: block;
     padding: 5px;
     margin: 0 10px;
+    transition: .4s;
+}
+
+footer a:hover {
+    color: white;
+    transition: .8s;
 }
 
 .image-with-heading-and-content {
@@ -71,7 +83,7 @@ footer a {
 
 .image-with-heading-and-content img {
     border-radius: 10px;
-    box-shadow: 8px 8px 10px 0 rgba(0,0,0,0.55);
+    box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.55);
 }
 
 @media(max-width: 1000px) {
@@ -79,16 +91,22 @@ footer a {
         flex-direction: column;
         align-items: center;
     }
-    
     .image-with-heading-and-content img {
         width: 60%;
         margin: 0 auto;
         margin: 10px;
     }
-
     main {
         width: 90%;
         text-align: center;
+    }
+}
+
+/* To be refactored */
+
+@media(max-width: 550px) {
+    .image-with-heading-and-content img {
+        width: 90%;
     }
 }
 
@@ -97,17 +115,14 @@ footer a {
         flex-direction: row;
         align-items: center;
     }
-
     .image-with-heading-and-content img {
         width: 45%;
         height: 100%;
         margin-left: 30px;
     }
-
     .heading-and-content {
         width: 55%;
     }
-
     main {
         width: 50%;
     }
