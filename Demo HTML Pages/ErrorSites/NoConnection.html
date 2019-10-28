@@ -3,15 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>No Connection</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <strong>Connection to server failed.</strong>
-    <p>
-      Please be sure that your device is connected to the Internet.<br>
-      Or contact your Internet Service Provider
-    </p>
-    <button>Retry</button> <!--Refresh the site-->
+    <div class="HeaderBackGround">
+      <strong>No Internet!</strong>
+    </div>
   </header>
+    <div class="TextContainer">
+      <p>
+        Are you sure you paid your internet bill this month?
+        If you are connected to the internet and still have no connection<br>
+        you may want to check our server status <a href="">here</a> <!--Insert Server status link here-->
+      </p>
+    </div>
+    <div class="ButtonHolder">
+      <button type="submit" onclick="window.location.reload()">Refresh (no fix guaranteed)</button> <!--Refresh the site-->
+    </div>
+    <div class="CatPicture">
+      <img src="img/cat.jpg">
+    </div>
+
 </body>
 </html>

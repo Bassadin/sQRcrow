@@ -12,6 +12,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -23,6 +24,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -53,6 +55,10 @@
       <option name="presentableId" value="Default" />
       <updated>1571663205061</updated>
       <workItem from="1571663208655" duration="1830000" />
+      <workItem from="1571669584552" duration="871000" />
+      <workItem from="1571672138220" duration="2991000" />
+      <workItem from="1571858920174" duration="2060000" />
+      <workItem from="1571871457831" duration="4928000" />
     </task>
     <servers />
   </component>
@@ -64,7 +70,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
