@@ -20,8 +20,100 @@ html {
  * Remove the margin in all browsers.
  */
 
+h1 {
+  font-family: "Aldo the Apache";
+  font-size: 4em;
+  color: white;
+  text-align: center;
+  text-shadow: #222222;
+}
+
+.container {
+  width: 450px;
+  height: 400px;
+  margin: 50px auto;
+  padding-top:50px;
+  text-align: center;
+  background-color: rgba(50, 50, 50, 0.8);
+  box-shadow: 1px 1px 15px;
+  border-radius: 20px;
+}
+
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
+  padding: 0;
+  background-image: url(schwarzwald.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/**.select {
+  margin-right: 10px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}**/
+
+a {
+  color:#fff;
+  font-weight: bolder;
+}
+a:visited {
+  color:#fff;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 8%;
+  text-align: center;
+  background-color: rgba(50, 50, 50, 1);
+}
+
+input[type="text"], input[type="password"] {
+  width: 300px;
+  height: 50px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  padding-left: 5px;
+}
+
+p {
+  color: #ffffff;
+  padding-top: 5px;
+}
+
+.button {
+  width:150px;
+  height: 50px;
+  font-size:18px;
+  background-color:#000;
+  color:#fff;
+  border:#fff solid 1px;
+}
+
+.button:hover {
+  background-color:#fff;
+  color:#000;
+  cursor: pointer;
+}
+
+h2 {
+  font-family: Helvetica;
+  font-size: 2em;
+  color: white;
+  position: center;
+}
+
+a:hover {
+  color: darkkhaki;
+  cursor: pointer;
 }
 
 /**
@@ -37,10 +129,6 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
 
 /* Grouping content
    ========================================================================== */
