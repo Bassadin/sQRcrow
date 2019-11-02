@@ -5,11 +5,11 @@ header{
   margin-right: auto;
   background: darkmagenta;
   padding: 30px 0;
-  font-family: "Comic Sans MS";
+  font-family: "Helvetica";
 }
 
 p{
-  font-family: "Comic Sans MS";
+  font-family: "Helvetica";
   text-align: center;
   background-color: #888888;
   color: black;
@@ -21,7 +21,7 @@ body{
 
 
 .ButtonHolder{
-  font-family: "Comic Sans MS";
+  font-family: "Helvetica";
   color: black;
   background: navajowhite;
   border-radius: 10px;
@@ -30,5 +30,12 @@ body{
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.ButtonHolder button{
+
+}
+a{
+  color: #999999;
 }
 
