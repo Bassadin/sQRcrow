@@ -5,30 +5,37 @@ header{
   margin-right: auto;
   background: darkmagenta;
   padding: 30px 0;
-  font-family: "Comic Sans MS";
+  font-family: "Helvetica";
 }
 
-p{
-  font-family: "Comic Sans MS";
+main{
+  font-family: "Helvetica";
   text-align: center;
   background-color: #888888;
+  height: auto;
+  width: auto;
   color: black;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body{
   margin: 0;
+  background-image: url("img/NightCity.png");
 }
 
-
-.ButtonHolder{
-  font-family: "Comic Sans MS";
-  color: black;
-  background: navajowhite;
+button{
   border-radius: 10px;
-  width: 120px;
-  height: 100px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  font-family: "Helvetica";
+}
+
+a{
+  color: #999999;
+}
+.TopTap{
+  width: auto;
+  height: 50px;
+  background-color: #8BB376;
 }
 

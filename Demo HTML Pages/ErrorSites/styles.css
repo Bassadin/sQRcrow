@@ -1,17 +1,18 @@
 p{
+  font-family: "Helvetica";
   color: white;
   text-align: center;
 }
 header{
   color: white;
-  font-family: "Comic Sans MS";
+  font-family: "Helvetica";
   text-align: center;
   padding: 30px 0;
   background: darkmagenta;
 }
 body{
-  font-family: "Comic Sans MS";
-  background: whitesmoke;
+  font-family: "Helvetica";
+  background: #FFC2FF;
   margin: 0;
 
 }
@@ -19,13 +20,20 @@ body{
 .TextContainer{
   text-align: center;
   font-size: 28px;
-  width: 600px;
+  width: 900px;
   margin: 0 auto;
   padding: 30px;
-  background: #888888;
   border-radius: 12px;
-  background-color: #999999;
+  background-color: #8BB376;
+}
+
+.TextContainer button{
+  font-family: "Helvetica";
   border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 10px;
+  background-color: #409149;
 }
 
 
@@ -38,6 +46,6 @@ body{
 .CatPicture{
   margin-top: 50px;
   display: block;
-  width: 100%;
+
 
 }
