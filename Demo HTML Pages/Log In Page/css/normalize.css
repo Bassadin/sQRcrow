@@ -13,8 +13,30 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-body {
+ul {
+  list-style-type: none;
   margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #00023B;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-left: 170px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #0d1f2d;
+  text-shadow: #E3D7A3;
 }
 
 h1 {
@@ -22,7 +44,7 @@ h1 {
   font-size: 4em;
   color: white;
   text-align: center;
-  text-shadow: #222222;
+  text-shadow: #0d1f2d;
 }
 
 .container {
@@ -43,9 +65,11 @@ body {
   padding: 0;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #0d1f2d;
   background-size: cover;
   background-attachment: fixed;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 a {
@@ -84,13 +108,13 @@ p {
   height: 50px;
   font-size:18px;
   background-color:#000;
-  color:#fff;
+  color:#E3D7A3;
   border:#fff solid 1px;
 }
 
 .button:hover {
-  background-color:#fff;
-  color:#000;
+  background-color:#E3D7A3;
+  color:#00023B;
   cursor: pointer;
 }
 
@@ -102,7 +126,7 @@ h2 {
 }
 
 a:hover {
-  color: darkkhaki;
+  color: #FdF8E5;
   cursor: pointer;
 }
 
