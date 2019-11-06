@@ -18,9 +18,10 @@
   },
   "homepage": "https://github.com/hfu-gis/gamma#readme",
   "dependencies": {
-    "material-kit": "^2.0.4",
     "core-js": "^3.3.2",
-    "vue": "^2.6.10"
+    "material-kit": "^2.0.4",
+    "vue": "^2.6.10",
+    "vuetify": "^2.1.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
