@@ -1,22 +1,19 @@
 <template>
   <v-app>
     <AppNavigation />
-
-    <v-content>
-      <HelloWorld />
+    <v-content transition="slide-x-transition">
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
 import AppNavigation from "./components/AppNavigation.vue";
 
 export default {
   name: "App",
 
   components: {
-    HelloWorld,
     AppNavigation
   },
 
