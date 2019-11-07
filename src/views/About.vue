@@ -1,6 +1,7 @@
 <template>
     <div class="about">
         <v-container text-center wrap>
+            <QRCodeReader />
             <v-flex xs12>
                 <v-img
                     :src="require('../assets/logo.svg')"
@@ -21,3 +22,14 @@
         </v-container>
     </div>
 </template>
+
+<script>
+import QRCodeReader from "@/components/QRCodeReader.vue";
+
+export default {
+    name: "home",
+    components: {
+        QRCodeReader
+    }
+};
+</script>
