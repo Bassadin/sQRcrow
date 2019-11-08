@@ -14,9 +14,15 @@ export default {
 
 <template>
     <v-container>
-        <qrcode-stream @decode="onDecode"></qrcode-stream>
+        <qrcode-stream class="qrWindow" @decode="onDecode"></qrcode-stream>
         <h1>{{ qrString }}</h1>
     </v-container>
 </template>
 
-<style scoped></style>
+<style scoped>
+.qrWindow {
+    height: 50vh !important;
+    width: 50vw !important;
+    margin: 0 auto;
+}
+</style>
