@@ -15,7 +15,8 @@
                     Welcome to sQRcrow
                 </h1>
                 <p class="subheading font-weight-regular">
-                    Click on <a href="/about">about</a> at the top to try out the qr code scanner
+                    Click on <a href="/about">about</a> at the top to try out
+                    the qr code scanner
                 </p>
             </v-flex>
         </v-layout>
