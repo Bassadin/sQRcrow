@@ -27,7 +27,7 @@
 import QRCodeReader from "@/components/QRCodeReader.vue";
 
 export default {
-    name: "home",
+    name: "about",
     components: {
         QRCodeReader
     }
