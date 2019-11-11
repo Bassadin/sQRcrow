@@ -3,7 +3,7 @@
         <v-spacer class="hidden-md-and-up"></v-spacer>
         <v-toolbar-title>sQRcrow</v-toolbar-title>
         <v-btn to="/">Home</v-btn>
-        <v-btn to="/about">About</v-btn>
+        <v-btn to="/about">QR Reader</v-btn>
         <v-btn to="/maps">Maps</v-btn>
         <v-spacer></v-spacer>
         <v-btn text>SIGN IN</v-btn>

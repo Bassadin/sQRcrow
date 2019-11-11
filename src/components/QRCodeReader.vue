@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .qrWindow {
     height: 50vh !important;
-    width: 50vw !important;
+    width: 80vw !important;
     margin: 0 auto;
 }
 </style>

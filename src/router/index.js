@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import About from "../views/About.vue";
+import QR_Reader from "../views/QR_Reader.vue";
 import Maps from "../views/Maps.vue";
 
 Vue.use(VueRouter);
@@ -13,9 +13,9 @@ const routes = [
         component: Home
     },
     {
-        path: "/about",
-        name: "about",
-        component: About
+        path: "/QR_Reader",
+        name: "QR-Reader",
+        component: QR_Reader
     },
     {
         path: "/maps",
