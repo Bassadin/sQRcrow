@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import QRCodeReader from "@/components/QRCodeReader.vue";
+import QRCodeReader from '@/components/QRCodeReader.vue';
 
 export default {
-    name: "QR_Reader",
+    name: 'QR_Reader',
     components: {
         QRCodeReader
     }

@@ -1,8 +1,8 @@
 <script>
 export default {
-    name: "QRCodeReader",
+    name: 'QRCodeReader',
     data: () => ({
-        qrString: "blubb"
+        qrString: 'blubb'
     }),
     methods: {
         onDecode(decodedString) {

@@ -51,7 +51,7 @@
   },
   "prettier": {
     "tabWidth": 4,
-    "singleQuote": false
+    "singleQuote": true
   },
   "postcss": {
     "plugins": {
