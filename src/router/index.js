@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import QR_Reader from "../views/QR_Reader.vue";
+import Maps from "../views/Maps.vue";
 
 Vue.use(VueRouter);
 
@@ -11,13 +13,14 @@ const routes = [
         component: Home
     },
     {
-        path: "/about",
-        name: "about",
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () =>
-            import(/* webpackChunkName: "about" */ "../views/About.vue")
+        path: "/QR_Reader",
+        name: "QR-Reader",
+        component: QR_Reader
+    },
+    {
+        path: "/maps",
+        name: "maps",
+        component: Maps
     }
 ];
 
