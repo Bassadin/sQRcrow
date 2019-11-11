@@ -18,8 +18,6 @@ export default {
     data: () => ({
         //
     }),
-    meta: [
-      { 'theme-color': '#000000' }
-    ]
+    meta: [{ 'theme-color': '#000000' }]
 };
 </script>
