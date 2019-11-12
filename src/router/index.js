@@ -30,4 +30,12 @@ const router = new VueRouter({
     routes
 });
 
+//Analytics
+import VueAnalytics from 'vue-analytics';
+Vue.use(VueAnalytics, {
+    id: process.env.VUE_APP_GOOGLE_ANALYTICS_TRACKING_CODE,
+    checkDuplicatedScript: true,
+    router
+});
+
 export default router;

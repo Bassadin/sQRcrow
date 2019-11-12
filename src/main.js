@@ -20,13 +20,6 @@ Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
-//Analytics
-import VueAnalytics from 'vue-analytics';
-Vue.use(VueAnalytics, {
-    id: process.env.VUE_APP_GOOGLE_ANALYTICS_TRACKING_CODE,
-    checkDuplicatedScript: true
-});
-
 //QR Reader
 import VueQrcodeReader from 'vue-qrcode-reader';
 Vue.use(VueQrcodeReader);
