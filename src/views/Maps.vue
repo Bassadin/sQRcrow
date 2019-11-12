@@ -1,28 +1,79 @@
 <template>
     <div class="maps">
-        <v-container text-center wrap>
-            <h1>Google Maps example</h1>
-            <GmapMap
-                :center="{ lat: 10, lng: 10 }"
-                :zoom="7"
-                map-type-id="terrain"
-                style="width: 500px; height: 300px"
+        <v-layout text-center wrap>
+            <l-map
+                v-if="showMap"
+                :zoom="zoom"
+                :center="center"
+                :options="mapOptions"
+                style="height:80vh"
+                @update:center="centerUpdate"
+                @update:zoom="zoomUpdate"
             >
-                <GmapMarker
-                    :key="index"
-                    v-for="(m, index) in markers"
-                    :position="m.position"
-                    :clickable="true"
-                    :draggable="true"
-                    @click="center = m.position"
-                />
-            </GmapMap>
-        </v-container>
+                <l-tile-layer :url="url" :attribution="attribution" />
+
+                <l-marker
+                    v-for="marker in markers"
+                    v-bind:lat-lng="marker.coordinates"
+                    v-bind:key="marker.id"
+                >
+                    <l-popup>
+                        <div @click="innerClick">
+                            {{ marker.content }}
+                        </div>
+                    </l-popup>
+                </l-marker>
+            </l-map>
+        </v-layout>
     </div>
 </template>
 
 <script>
+import { latLng } from 'leaflet';
+import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 export default {
-    name: 'maps'
+    name: 'maps',
+    components: {
+        LMap,
+        LTileLayer,
+        LMarker,
+        LPopup
+    },
+    data() {
+        return {
+            zoom: 14,
+            center: latLng(48.05162, 8.20798),
+            url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+            attribution:
+                '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            currentZoom: 7,
+            currentCenter: latLng(47.41322, -1.219482),
+            mapOptions: {
+                zoomSnap: 0.2
+            },
+            showMap: true,
+            markers: [
+                {
+                    coordinates: latLng(48.05162, 8.20798),
+                    content: 'Cursed Clocktower'
+                },
+                {
+                    coordinates: latLng(48.04, 8.208),
+                    content: 'Student Flats of DOOM'
+                }
+            ]
+        };
+    },
+    methods: {
+        zoomUpdate(zoom) {
+            this.currentZoom = zoom;
+        },
+        centerUpdate(center) {
+            this.currentCenter = center;
+        },
+        innerClick() {
+            // alert('Click!');
+        }
+    }
 };
 </script>
