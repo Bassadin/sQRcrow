@@ -12,10 +12,11 @@
             >
                 <l-tile-layer :url="url" :attribution="attribution" />
 
-                <l-marker
-                    :lat-lng="userCoordinates"
-                    :icon="userLocationIcon"
-                ></l-marker>
+                <l-marker :lat-lng="userCoordinates" :icon="userLocationIcon">
+                    <l-popup>
+                        <div @click="innerClick">Your Location</div>
+                    </l-popup>
+                </l-marker>
 
                 <l-marker
                     v-for="marker in markers"
@@ -50,12 +51,12 @@ export default {
             userLocationIcon: L.icon({
                 iconUrl: require('@/assets/map-icons/target.svg'),
                 iconSize: [32, 32],
-                iconAnchor: [0, 0]
+                iconAnchor: [16, 0]
             }),
             qrCodeLocationIcon: L.icon({
                 iconUrl: require('@/assets/map-icons/qr-code.svg'),
                 iconSize: [32, 32],
-                iconAnchor: [0, 0]
+                iconAnchor: [16, 0]
             }),
             zoom: 14,
             center: latLng(48.05162, 8.20798),
