@@ -1,5 +1,5 @@
 <template>
-    <v-app id="inspire">
+    <v-app id="nvaigation">
         <v-navigation-drawer v-model="drawer" style="z-index:3000;" app clipped>
             <v-list dense>
                 <v-list-item
@@ -34,6 +34,20 @@
                 <slot></slot>
             </v-container>
         </v-content>
+
+        <v-btn
+            key="mdi-qrcode"
+            color="#00023B"
+            fab
+            large
+            dark
+            bottom
+            right
+            class="fab-button"
+            to="/QR_Reader"
+        >
+            <v-icon>mdi-qrcode</v-icon>
+        </v-btn>
     </v-app>
 </template>
 
@@ -50,8 +64,14 @@ export default {
             { icon: 'mdi-map-search', text: 'Map', to: '/maps' }
         ]
     })
-    // created() {
-    //     this.$vuetify.theme.dark = true;
-    // }
 };
 </script>
+
+<style scoped>
+.fab-button {
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    margin: 0 22px 22px 0;
+}
+</style>
