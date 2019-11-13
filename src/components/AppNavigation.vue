@@ -1,20 +1,57 @@
 <template>
-    <v-app-bar app color="brown darken-4" dark>
-        <v-spacer class="hidden-md-and-up"></v-spacer>
-        <v-toolbar-title>sQRcrow</v-toolbar-title>
-        <v-btn to="/">Home</v-btn>
-        <v-btn to="/QR_Reader">QR Reader</v-btn>
-        <v-btn to="/maps">Maps</v-btn>
-        <v-spacer></v-spacer>
-        <v-btn text>SIGN IN</v-btn>
-        <v-btn color="brown lighten-3">JOIN</v-btn>
-    </v-app-bar>
+    <v-app id="inspire">
+        <v-navigation-drawer v-model="drawer" style="z-index:3000;" app clipped>
+            <v-list dense>
+                <v-list-item
+                    v-for="page in pages"
+                    :key="page.text"
+                    :to="page.to"
+                    link
+                >
+                    <v-list-item-action>
+                        <v-icon>{{ page.icon }}</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>{{ page.text }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+        </v-navigation-drawer>
+
+        <v-app-bar app clipped-left color="#0D1F2D" dense>
+            <v-app-bar-nav-icon
+                color="#FDF8E5"
+                @click.stop="drawer = !drawer"
+            />
+            <v-icon class="mx-4" color="#FDF8E5">mdi-qrcode</v-icon>
+            <v-toolbar-title class="mr-12 align-center">
+                <span class="title" style="color:#FDF8E5">sQRcrow</span>
+            </v-toolbar-title>
+        </v-app-bar>
+
+        <v-content>
+            <v-container class="fill-height" style="padding:0;margin:0;">
+                <slot></slot>
+            </v-container>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
 export default {
-    name: 'AppNavigation'
+    props: {
+        source: String
+    },
+    data: () => ({
+        drawer: null,
+        pages: [
+            { icon: 'mdi-home', text: 'Home', to: '/' },
+            { icon: 'mdi-qrcode-scan', text: 'QR-Scanner', to: '/QR_Reader' },
+            { icon: 'mdi-map-search', text: 'Map', to: '/maps' }
+        ]
+    })
+    // created() {
+    //     this.$vuetify.theme.dark = true;
+    // }
 };
 </script>
-
-<style scoped></style>

@@ -1,35 +1,33 @@
 <template>
     <div class="maps">
-        <v-layout text-center wrap>
-            <l-map
-                v-if="showMap"
-                :zoom="zoom"
-                :center="center"
-                :options="mapOptions"
-                style="height:80vh"
-                @update:center="centerUpdate"
-                @update:zoom="zoomUpdate"
+        <l-map
+            v-if="showMap"
+            :zoom="zoom"
+            :center="center"
+            :options="mapOptions"
+            style="width:100%;height:100%"
+            @update:center="centerUpdate"
+            @update:zoom="zoomUpdate"
+        >
+            <l-tile-layer :url="url" :attribution="attribution" />
+
+            <l-marker :lat-lng="userCoordinates" :icon="userLocationIcon">
+                <l-popup>
+                    <div @click="innerClick">Your Location</div>
+                </l-popup>
+            </l-marker>
+
+            <l-marker
+                v-for="marker in markers"
+                v-bind:lat-lng="marker.coordinates"
+                v-bind:key="marker.id"
+                :icon="qrCodeLocationIcon"
             >
-                <l-tile-layer :url="url" :attribution="attribution" />
-
-                <l-marker :lat-lng="userCoordinates" :icon="userLocationIcon">
-                    <l-popup>
-                        <div @click="innerClick">Your Location</div>
-                    </l-popup>
-                </l-marker>
-
-                <l-marker
-                    v-for="marker in markers"
-                    v-bind:lat-lng="marker.coordinates"
-                    v-bind:key="marker.id"
-                    :icon="qrCodeLocationIcon"
-                >
-                    <l-popup>
-                        <div @click="innerClick">{{ marker.content }}</div>
-                    </l-popup>
-                </l-marker>
-            </l-map>
-        </v-layout>
+                <l-popup>
+                    <div @click="innerClick">{{ marker.content }}</div>
+                </l-popup>
+            </l-marker>
+        </l-map>
     </div>
 </template>
 
@@ -102,3 +100,10 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.maps {
+    width: 100%;
+    height: 100%;
+}
+</style>

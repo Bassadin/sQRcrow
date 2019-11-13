@@ -1,9 +1,8 @@
 <template>
     <v-app>
-        <AppNavigation />
-        <v-content transition="slide-x-transition">
+        <AppNavigation>
             <router-view></router-view>
-        </v-content>
+        </AppNavigation>
     </v-app>
 </template>
 
