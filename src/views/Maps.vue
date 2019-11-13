@@ -13,14 +13,18 @@
                 <l-tile-layer :url="url" :attribution="attribution" />
 
                 <l-marker
+                    :lat-lng="userCoordinates"
+                    :icon="userLocationIcon"
+                ></l-marker>
+
+                <l-marker
                     v-for="marker in markers"
                     v-bind:lat-lng="marker.coordinates"
                     v-bind:key="marker.id"
+                    :icon="qrCodeLocationIcon"
                 >
                     <l-popup>
-                        <div @click="innerClick">
-                            {{ marker.content }}
-                        </div>
+                        <div @click="innerClick">{{ marker.content }}</div>
                     </l-popup>
                 </l-marker>
             </l-map>
@@ -31,6 +35,8 @@
 <script>
 import { latLng } from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
+import L from 'leaflet';
+
 export default {
     name: 'maps',
     components: {
@@ -41,6 +47,16 @@ export default {
     },
     data() {
         return {
+            userLocationIcon: L.icon({
+                iconUrl: require('@/assets/map-icons/target.svg'),
+                iconSize: [32, 32],
+                iconAnchor: [0, 0]
+            }),
+            qrCodeLocationIcon: L.icon({
+                iconUrl: require('@/assets/map-icons/qr-code.svg'),
+                iconSize: [32, 32],
+                iconAnchor: [0, 0]
+            }),
             zoom: 14,
             center: latLng(48.05162, 8.20798),
             url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
@@ -52,6 +68,7 @@ export default {
                 zoomSnap: 0.2
             },
             showMap: true,
+            userCoordinates: latLng(48.05162, 8.20798),
             markers: [
                 {
                     coordinates: latLng(48.05162, 8.20798),
@@ -74,6 +91,13 @@ export default {
         innerClick() {
             // alert('Click!');
         }
+    },
+    mounted() {
+        this.$watchLocation({
+            enableHighAccuracy: true
+        }).then(coordinates => {
+            this.userCoordinates = coordinates;
+        });
     }
 };
 </script>
