@@ -33,7 +33,7 @@ const router = new VueRouter({
 //Analytics
 import VueAnalytics from 'vue-analytics';
 Vue.use(VueAnalytics, {
-    id: process.env.VUE_APP_GOOGLE_ANALYTICS_TRACKING_CODE,
+    id: 'UA-151954503-1',
     checkDuplicatedScript: true,
     router
 });
