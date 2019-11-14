@@ -1,6 +1,6 @@
 <template>
     <v-app id="nvaigation">
-        <v-navigation-drawer v-model="drawer" style="z-index:3000;" app clipped>
+        <v-navigation-drawer id="nav-drawer" v-model="drawer" app clipped>
             <v-list dense>
                 <v-list-item
                     v-for="page in pages"
@@ -30,9 +30,7 @@
         </v-app-bar>
 
         <v-content>
-            <v-container class="fill-height" style="padding:0;margin:0;">
-                <slot></slot>
-            </v-container>
+            <slot></slot>
         </v-content>
 
         <v-btn
@@ -73,5 +71,9 @@ export default {
     right: 0;
     position: fixed;
     margin: 0 22px 22px 0;
+}
+
+#nav-drawer {
+    z-index: 3000; /* Make navbar hover above the map (and everything else) on mobile */
 }
 </style>
