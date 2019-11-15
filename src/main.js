@@ -4,6 +4,13 @@ import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
 
+//vue-meta
+import VueMeta from 'vue-meta';
+Vue.use(VueMeta, {
+    // optional pluginOptions
+    refreshOnceOnNavigation: true
+});
+
 //Geolocation
 import VueGeolocation from 'vue-browser-geolocation';
 Vue.use(VueGeolocation);

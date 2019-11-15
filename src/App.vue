@@ -14,9 +14,20 @@ export default {
     components: {
         AppNavigation
     },
-    data: () => ({
-        //
-    }),
-    meta: [{ 'theme-color': '#000000' }]
+    data: () => ({}),
+    metaInfo: {
+        title: process.env.VUE_APP_NAME,
+        htmlAttrs: {
+            lang: 'de-DE'
+        },
+        meta: [{ name: 'theme-color', content: '#0D1F2D' }],
+        link: [
+            {
+                rel: 'shortcut icon',
+                href: require('@/assets/logos/sQRcrow_logo.png'),
+                type: 'image/x-icon'
+            }
+        ]
+    }
 };
 </script>
