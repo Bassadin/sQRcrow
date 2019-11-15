@@ -17,9 +17,6 @@ export default {
     data: () => ({}),
     metaInfo: {
         title: process.env.VUE_APP_NAME,
-        htmlAttrs: {
-            lang: 'de-DE'
-        },
         meta: [{ name: 'theme-color', content: '#0D1F2D' }],
         link: [
             {
