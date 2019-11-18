@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import QR_Reader from '../views/QR_Reader.vue';
 import Maps from '../views/Maps.vue';
+import Impressum from '../views/Impressum.vue';
+import Help from '../views/Help.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +23,16 @@ const routes = [
         path: '/maps',
         name: 'maps',
         component: Maps
+    },
+    {
+        path: '/impressum',
+        name: 'impressum',
+        component: Impressum
+    },
+    {
+        path: '/help',
+        name: 'help',
+        component: Help
     }
 ];
 
