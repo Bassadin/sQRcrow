@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import QR_Reader from '../views/QR_Reader.vue';
 import Maps from '../views/Maps.vue';
+import Login from '../views/Login.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
         path: '/maps',
         name: 'maps',
         component: Maps
+    },
+    {
+        path: '/Login',
+        name: '/Login',
+        component: Login
     }
 ];
 
