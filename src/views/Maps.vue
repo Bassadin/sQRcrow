@@ -18,7 +18,7 @@
             </l-marker>
 
             <l-marker
-                v-for="marker in markers"
+                v-for="marker in qr - code - locations"
                 v-bind:lat-lng="marker.coordinates"
                 v-bind:key="marker.id"
                 :icon="qrCodeLocationIcon"
@@ -32,9 +32,14 @@
 </template>
 
 <script>
+//Maps
 import { latLng } from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 import L from 'leaflet';
+
+//Firestore
+import firebase from 'firebase';
+import { db } from '../main';
 
 export default {
     name: 'maps',
@@ -43,6 +48,11 @@ export default {
         LTileLayer,
         LMarker,
         LPopup
+    },
+    firestore() {
+        return {
+            comics: db.collection('qr-codes')
+        };
     },
     data() {
         return {
@@ -68,7 +78,7 @@ export default {
             },
             showMap: true,
             userCoordinates: latLng(48.05162, 8.20798),
-            markers: [
+            qrCodeLocations: [
                 {
                     coordinates: latLng(48.05162, 8.20798),
                     content: 'Cursed Clocktower'
@@ -89,6 +99,14 @@ export default {
         },
         innerClick() {
             // alert('Click!');
+        },
+        logout() {
+            firebase
+                .auth()
+                .signOut()
+                .then(() => {
+                    this.$router.replace('login');
+                });
         }
     },
     mounted() {

@@ -4,6 +4,12 @@ import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
 
+//Firebase
+import VueFire from 'vuefire';
+import 'firebase/firestore';
+
+Vue.use(VueFire);
+
 //vue-meta
 import VueMeta from 'vue-meta';
 Vue.use(VueMeta, {
