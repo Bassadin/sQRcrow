@@ -35,6 +35,7 @@
 
         <v-btn
             key="mdi-qrcode"
+            id="qr-fab"
             color="#00023B"
             fab
             large
@@ -73,7 +74,7 @@ export default {
     margin: 0 22px 22px 0;
 }
 
-#nav-drawer {
+#nav-drawer, #qr-fab {
     z-index: 3000; /* Make navbar hover above the map (and everything else) on mobile */
 }
 </style>
