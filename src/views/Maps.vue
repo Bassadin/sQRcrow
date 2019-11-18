@@ -10,12 +10,7 @@
             @update:zoom="zoomUpdate"
         >
             <l-tile-layer :url="url" :attribution="attribution" />
-
-            <l-marker :lat-lng="userCoordinates" :icon="userLocationIcon">
-                <l-popup>
-                    <div @click="innerClick">Your Location</div>
-                </l-popup>
-            </l-marker>
+            <v-locatecontrol />
 
             <l-marker
                 v-for="marker in qrCodeLocations"
@@ -39,6 +34,7 @@
 import { latLng } from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 import L from 'leaflet';
+import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol';
 
 //Firestore
 import { db } from '../db';
@@ -49,7 +45,8 @@ export default {
         LMap,
         LTileLayer,
         LMarker,
-        LPopup
+        LPopup,
+        'v-locatecontrol': Vue2LeafletLocatecontrol
     },
     data() {
         return {
@@ -74,7 +71,6 @@ export default {
                 zoomSnap: 0.2
             },
             showMap: true,
-            userCoordinates: latLng(48.05162, 8.20798),
             qrCodeLocations: []
         };
     },
@@ -91,18 +87,13 @@ export default {
         innerClick() {
             // alert('Click!');
         }
-    },
-    mounted() {
-        this.$watchLocation({
-            enableHighAccuracy: true
-        }).then(coordinates => {
-            this.userCoordinates = coordinates;
-        });
     }
 };
 </script>
 
 <style scoped>
+@import '~leaflet/dist/leaflet.css';
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
 .maps {
     width: 100%;
     height: 100%;
