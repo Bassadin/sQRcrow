@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import QR_Reader from '../views/QR_Reader.vue';
 import Maps from '../views/Maps.vue';
 import Login from '../views/Login.vue';
+import Join from '../views/Join.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
         path: '/Login',
         name: '/Login',
         component: Login
+    },
+    {
+        path: '/Join',
+        name: '/Join',
+        component: Join
     }
 ];
 

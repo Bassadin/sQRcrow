@@ -1,14 +1,44 @@
 <template>
-    <div class="Login">
-         <h1>Anmelden</h1>
+    <div id="Login">
+        <v-form v-model="valid">
+            <v-container>
+                <v-row>
+                    <v-col
+                            cols="12"
+                            md="4"
+                    >
+                        <v-text-field
+                                v-model="username"
+                                :error-messages="nameErrors"
+                                :rules="nameRules"
+                                label="Benutzername"
+                                required
+                                @input="$v.name.$touch()"
+                                @blur="$v.name.$touch()"
+                        ></v-text-field>
+                    </v-col>
 
-                <label>Benutzername</label>
-                    <input required v-model="username" type="text" placeholder="Benutzername"/>
-                <label>Passwort</label>
-                    <input required v-model="passwort" type="passwort" placeholder="Passwort"/>
+                    <v-col
+                            cols="12"
+                            md="4"
+                    >
+                        <v-text-field
+                                v-model="password"
+                                :error-messages="nameErrors"
+                                :rules="nameRules"
+                                label="Passwort"
+                                required
+                                @input="$v.name.$touch()"
+                                @blur="$v.name.$touch()"
+                        ></v-text-field>
+                    </v-col>
 
-            <button type="submit" name="submit" class="button">anmelden</button>
-        </div>
+                    <v-btn class="mr-4" @click="submit">Okay</v-btn>
+
+                </v-row>
+            </v-container>
+        </v-form>
+    </div>
 </template>
 
 <script>

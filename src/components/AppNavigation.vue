@@ -60,7 +60,9 @@ export default {
         pages: [
             { icon: 'mdi-home', text: 'Home', to: '/' },
             { icon: 'mdi-qrcode-scan', text: 'QR-Scanner', to: '/QR_Reader' },
-            { icon: 'mdi-map-search', text: 'Map', to: '/maps' }
+            { icon: 'mdi-map-search', text: 'Map', to: '/maps' },
+            { icon: 'mdi-account', text: 'Login', to: '/Login'},
+            { icon: 'mdi-account-group', text: 'Join', to: '/Join'}
         ]
     })
 };
