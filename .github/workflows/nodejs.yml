@@ -1,9 +1,6 @@
 name: Firebase Hosting
 
 on:
-    pull_request:
-        branches:
-            - master
     push:
         branches:
             - master
