@@ -5,10 +5,8 @@ import store from './store';
 import vuetify from './plugins/vuetify';
 
 //Firebase
-import VueFire from 'vuefire';
-import 'firebase/firestore';
-
-Vue.use(VueFire);
+import { firestorePlugin } from 'vuefire';
+Vue.use(firestorePlugin);
 
 //vue-meta
 import VueMeta from 'vue-meta';

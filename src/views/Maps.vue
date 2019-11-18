@@ -18,13 +18,16 @@
             </l-marker>
 
             <l-marker
-                v-for="marker in qr - code - locations"
-                v-bind:lat-lng="marker.coordinates"
+                v-for="marker in qrCodeLocations"
+                v-bind:lat-lng="[
+                    marker.location.latitude,
+                    marker.location.longitude
+                ]"
                 v-bind:key="marker.id"
                 :icon="qrCodeLocationIcon"
             >
                 <l-popup>
-                    <div @click="innerClick">{{ marker.content }}</div>
+                    <div @click="innerClick">{{ marker.name }}</div>
                 </l-popup>
             </l-marker>
         </l-map>
@@ -38,8 +41,7 @@ import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 import L from 'leaflet';
 
 //Firestore
-import firebase from 'firebase';
-import { db } from '../main';
+import { db } from '../db';
 
 export default {
     name: 'maps',
@@ -48,11 +50,6 @@ export default {
         LTileLayer,
         LMarker,
         LPopup
-    },
-    firestore() {
-        return {
-            comics: db.collection('qr-codes')
-        };
     },
     data() {
         return {
@@ -78,17 +75,11 @@ export default {
             },
             showMap: true,
             userCoordinates: latLng(48.05162, 8.20798),
-            qrCodeLocations: [
-                {
-                    coordinates: latLng(48.05162, 8.20798),
-                    content: 'Cursed Clocktower'
-                },
-                {
-                    coordinates: latLng(48.04, 8.208),
-                    content: 'Student Flats of DOOM'
-                }
-            ]
+            qrCodeLocations: []
         };
+    },
+    firestore: {
+        qrCodeLocations: db.collection('qr-codes')
     },
     methods: {
         zoomUpdate(zoom) {
@@ -99,14 +90,6 @@ export default {
         },
         innerClick() {
             // alert('Click!');
-        },
-        logout() {
-            firebase
-                .auth()
-                .signOut()
-                .then(() => {
-                    this.$router.replace('login');
-                });
         }
     },
     mounted() {
