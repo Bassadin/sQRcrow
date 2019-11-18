@@ -3,7 +3,23 @@
         <v-navigation-drawer id="nav-drawer" v-model="drawer" app clipped>
             <v-list dense>
                 <v-list-item
-                    v-for="page in pages"
+                    v-for="page in mainPages"
+                    :key="page.text"
+                    :to="page.to"
+                    link
+                >
+                    <v-list-item-action>
+                        <v-icon>{{ page.icon }}</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>{{ page.text }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+            <v-divider></v-divider>
+            <v-list dense>
+                <v-list-item
+                    v-for="page in lowerPages"
                     :key="page.text"
                     :to="page.to"
                     link
@@ -57,10 +73,18 @@ export default {
     },
     data: () => ({
         drawer: null,
-        pages: [
+        mainPages: [
             { icon: 'mdi-home', text: 'Home', to: '/' },
             { icon: 'mdi-qrcode-scan', text: 'QR-Scanner', to: '/QR_Reader' },
             { icon: 'mdi-map-search', text: 'Map', to: '/maps' }
+        ],
+        lowerPages: [
+            {
+                icon: 'mdi-information-outline',
+                text: 'Impressum',
+                to: '/impressum'
+            },
+            { icon: 'mdi-help-circle-outline', text: 'Help', to: '/help' }
         ]
     })
 };
