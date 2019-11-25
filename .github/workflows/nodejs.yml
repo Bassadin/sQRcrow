@@ -36,7 +36,7 @@ jobs:
             - name: Add firebase project
               uses: w9jds/firebase-action@master
               with:
-                  args: target:apply hosting sqrcrow <resources...>
+                  args: target:apply hosting sqrcrow sqrcrow
               env:
                   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
             - name: Deploy to Firebase
