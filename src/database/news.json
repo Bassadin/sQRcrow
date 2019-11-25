@@ -3,17 +3,20 @@
     {
       "title": "What's new?",
       "content": "Hello World, our camera and google maps work now :D",
-      "flex": 12
+      "flex": 12,
+      "picsrc": "../assets/images/news/Tomoko.gif"
     },
     {
-      "title": "sub to pewdiepie",
-      "content": "Road to 200 millions",
-      "flex" : 6
+      "title": "Known",
+      "content": "Help me I don't know how to code",
+      "flex" : 6,
+      "picsrc": ""
     },
     {
       "title": "The Truth",
       "content": "Epstein didnt kill himself",
-      "flex" : 6
+      "flex" : 6,
+      "picsrc": ""
     }
   ]
 }

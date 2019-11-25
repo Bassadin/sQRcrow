@@ -28,7 +28,7 @@
                         :cols="item.flex">
                     <v-card>
                         <v-img
-                            src="http://picsum.photos/700/500"
+                            :src="item.picsrc"
                             gradient="to bottom, rgba(0.1,0.5,0.2,0.01),rgba(0.1,0.5,0.2,0.01)"
                             height="200px"
                         >
