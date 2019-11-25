@@ -4,19 +4,19 @@
       "title": "What's new?",
       "content": "Hello World, our camera and google maps work now :D",
       "flex": 12,
-      "img": "x.jpg"
+      "img": "sunset_Andre_iv.jpg"
     },
     {
       "title": "Known Issue",
       "content": "Help me I don't know how to code",
       "flex" : 6,
-      "img": "x.jpg"
+      "img": "dima_kosh.jpg"
     },
     {
-      "title": "The Truth",
-      "content": "Epstein didnt kill himself",
+      "title": "Roadmap",
+      "content": "What we plan for the future",
       "flex" : 6,
-      "img": "x.jpg"
+      "img": "mason_summers.jpg"
     }
   ]
 }
