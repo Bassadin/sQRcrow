@@ -4,7 +4,7 @@
             <h1>NO CONNECTION!</h1>
             <p>Hey, {{ userName }}! It looks like we can't connect to our server.<br>
                 Make sure to keep your device connected.<br>
-                If you're connected but still unable to use, you might want to come <a href="">here</a></p><!--Help link-->
+                If you're connected but still unable to use, you might want to come <a href="/help">here</a></p><!--Help link-->
             <v-btn type="submit" onclick="window.location.reload()">Refresh (no fix guaranteed)</v-btn> <!--Refresh the site-->
         </main>
     </div>
