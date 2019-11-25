@@ -24,12 +24,11 @@
             <v-row dense>
                 <v-col  max-height="auto" max-width="auto"
                         v-for="item in newsContent.news"
-                        :key="item"
+                        :key="item.key"
                         :cols="item.flex">
                     <v-card>
                         <v-img
-                            :src="item.picsrc"
-                            gradient="to bottom, rgba(0.1,0.5,0.2,0.01),rgba(0.1,0.5,0.2,0.01)"
+                            :src="require('@/assets/images/news/' + item.img)"
                             height="200px"
                         >
                             <h2>{{item.title}}</h2>
@@ -47,27 +46,34 @@
 </template>
 
 <script>
-
     export default {
         data() {
             return {
-                newsContent: {}
+                newsContent:{}
             };
 
         },
-        created() {
+        mounted() {
             this.newsContent = require('../database/news');
+        },
+        computed:{
+            assetsPath:function(file) {
+                return require(file);
+            }
         }
     };
 </script>
 
 <style scoped>
     .v-card {
-        color: #000000;
+        color: Black;
         font-size: 22px;
     }
     h2{
-        color: #cccccc;
+        color: Black;
         font-size: 30px;
+    }
+    p{
+        color: #222222;
     }
 </style>

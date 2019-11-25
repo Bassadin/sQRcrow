@@ -4,19 +4,19 @@
       "title": "What's new?",
       "content": "Hello World, our camera and google maps work now :D",
       "flex": 12,
-      "picsrc": "../assets/images/news/Tomoko.gif"
+      "img": "x.jpg"
     },
     {
-      "title": "Known",
+      "title": "Known Issue",
       "content": "Help me I don't know how to code",
       "flex" : 6,
-      "picsrc": ""
+      "img": "x.jpg"
     },
     {
       "title": "The Truth",
       "content": "Epstein didnt kill himself",
       "flex" : 6,
-      "picsrc": ""
+      "img": "x.jpg"
     }
   ]
 }
