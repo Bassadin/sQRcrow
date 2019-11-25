@@ -5,6 +5,7 @@ import QR_Reader from '../views/QR_Reader.vue';
 import Maps from '../views/Maps.vue';
 import Impressum from '../views/Impressum.vue';
 import Help from '../views/Help.vue';
+import NoConnection from '../views/NoConnection';
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
         path: '/help',
         name: 'help',
         component: Help
+    },
+    {
+        path: '/no_connection',
+        name: 'NoConnection',
+        component: NoConnection
     }
 ];
 
