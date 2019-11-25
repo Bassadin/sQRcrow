@@ -33,6 +33,12 @@ jobs:
               uses: actions/download-artifact@master
               with:
                   name: dist
+            - name: Add firebase project
+              uses: w9jds/firebase-action@master
+              with:
+                  args: target:apply hosting sqrcrow <resources...>
+              env:
+                  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
             - name: Deploy to Firebase
               uses: w9jds/firebase-action@master
               with:
