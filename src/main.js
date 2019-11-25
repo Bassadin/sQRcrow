@@ -16,11 +16,13 @@ Vue.use(VueMeta, {
 });
 
 //Load Leaflet Stuff
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
-import 'leaflet/dist/leaflet.css';
-Vue.component('l-map', LMap);
-Vue.component('l-tile-layer', LTileLayer);
-Vue.component('l-marker', LMarker);
+import * as Vue2Leaflet from 'vue2-leaflet';
+Vue.use(Vue2Leaflet);
+import * as Leaflet from 'leaflet';
+Vue.use(Leaflet);
+
+import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol';
+Vue.component('v-locatecontrol', Vue2LeafletLocatecontrol);
 
 // eslint-disable-next-line
 delete L.Icon.Default.prototype._getIconUrl;

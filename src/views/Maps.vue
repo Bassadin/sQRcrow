@@ -9,8 +9,7 @@
             @update:center="centerUpdate"
             @update:zoom="zoomUpdate"
         >
-            <l-tile-layer :url="url" :attribution="attribution" />
-            <v-locatecontrol />
+            <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
 
             <l-marker
                 v-for="marker in qrCodeLocations"
@@ -30,11 +29,8 @@
 </template>
 
 <script>
-//Maps
-import { latLng } from 'leaflet';
+import * as Leaflet from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
-import L from 'leaflet';
-import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol';
 
 //Firestore
 import { db } from '../db';
@@ -43,30 +39,29 @@ export default {
     name: 'maps',
     components: {
         LMap,
-        LTileLayer,
         LMarker,
         LPopup,
-        'v-locatecontrol': Vue2LeafletLocatecontrol
+        LTileLayer
     },
     data() {
         return {
-            userLocationIcon: L.icon({
+            userLocationIcon: Leaflet.icon({
                 iconUrl: require('@/assets/map-icons/target.svg'),
                 iconSize: [32, 32],
                 iconAnchor: [16, 0]
             }),
-            qrCodeLocationIcon: L.icon({
+            qrCodeLocationIcon: Leaflet.icon({
                 iconUrl: require('@/assets/map-icons/qr-code.svg'),
                 iconSize: [32, 32],
                 iconAnchor: [16, 0]
             }),
             zoom: 14,
-            center: latLng(48.05162, 8.20798),
+            center: { lat: 48.05162, lng: 8.20798 },
             url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
             attribution:
                 '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             currentZoom: 7,
-            currentCenter: latLng(47.41322, -1.219482),
+            currentCenter: { lat: 47.41322, lng: -1.219482 },
             mapOptions: {
                 zoomSnap: 0.2
             },
