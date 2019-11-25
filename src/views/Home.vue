@@ -20,7 +20,23 @@
                 </p>
             </v-flex>
         </v-layout>
+        <v-card max-height="420" max-width="250">
+            <v-card-text>
+
+            </v-card-text>
+        </v-card>
     </div>
 </template>
 
-<script></script>
+<script>
+    var newsData = require("../database/news");
+
+    export default {
+        data(){
+            return{
+                newsContent: newsData.news
+            }
+
+        }
+        }
+</script>

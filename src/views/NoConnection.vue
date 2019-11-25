@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    var json = require("../NoConnection.json");
+    var json = require("../database/NoConnection");
 
     export default {
         name: 'NoConnection',
