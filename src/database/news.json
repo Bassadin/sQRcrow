@@ -2,15 +2,18 @@
   "news": [
     {
       "title": "What's new?",
-      "content": "Hello World, our camera and google maps work now :D"
+      "content": "Hello World, our camera and google maps work now :D",
+      "flex": 12
     },
     {
-      "title": "",
-      "content": ""
+      "title": "sub to pewdiepie",
+      "content": "Road to 200 millions",
+      "flex" : 6
     },
     {
-      "title": "",
-      "content": ""
+      "title": "The Truth",
+      "content": "Epstein didnt kill himself",
+      "flex" : 6
     }
   ]
 }
