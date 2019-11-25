@@ -33,15 +33,9 @@ jobs:
               uses: actions/download-artifact@master
               with:
                   name: dist
-            - name: Add firebase project
-              uses: w9jds/firebase-action@master
-              with:
-                  args: target:apply hosting sqrcrow sqrcrow
-              env:
-                  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
             - name: Deploy to Firebase
               uses: w9jds/firebase-action@master
               with:
-                  args: deploy --only hosting:sqrcrow --project sqrcrow-7c7f8
+                  args: deploy --only hosting:sqrcrow
               env:
                   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
