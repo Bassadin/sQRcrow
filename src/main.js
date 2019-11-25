@@ -15,10 +15,6 @@ Vue.use(VueMeta, {
     refreshOnceOnNavigation: true
 });
 
-//Geolocation
-import VueGeolocation from 'vue-browser-geolocation';
-Vue.use(VueGeolocation);
-
 //Load Leaflet Stuff
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
