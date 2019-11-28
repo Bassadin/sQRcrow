@@ -1,0 +1,10 @@
+{
+  "name": "Manuel",
+  "items": [
+    {"title" : "Wie funktioniert unsere Web-App?", "content" :  "sQRcrow ist ein auf standortbasiertes soziales Netzwerk. Wir wollen eine Gemeinschaft pflegen, die durch Interaktion mit QR Codes Beiträge posten kann. Unsere Web-App ist leicht aufgebaut: du findest oben links auf jeder Seite den Button für das Navigationsmenü, welches dich auf jede Seite der App bringen kann. Unten Rechts findest du den QR-Button, der dich sofort auf schnellstem Wege zu deinem QR-Scanner bringt. Hast du einen sQRcrow-Code gefunden? Dann probiere es gleich mal aus, indem du ihn mit dem QR-Scanner scannst. Danach listen sich die aktuellsten und beliebtesten Beiträge deiner aktuellen Location auf und du kannst direkt einen eigenen Beitrag posten. Unsere bitte an dich ist es immer freundlich mit anderen Usern umzugehen :)"},
+    {"title" : "Über uns", "content" :  "Hallo User! Wir begrüßen dich persönlich als User auf sQRcrow. Wir sind ein studentisches Team, das diese Web-App als Semesterprojekt aufgesetzt hat. Derzeit studieren wir Medieninformatik BSc im zweiten Semester an der Hochschule Furtwangen im Schwarzwald und wollen eine innovative Form von Kommunikation ins Leben rufen. Vielen Dank für dein Interesse an sQRcrow und Grüße von Bastian Hodapp, Manuel Haugg, Tawan Nansin und Karen Josten :)"},
+    {"title" : "Melden", "content" :  "Ist dir jemand negativ aufgefallen? Dann kontaktiere uns per Mail und nenne uns den Username des Aufallenden. Falls du Beweismaterial besitzt kannst du dieses auch gerne an uns weiterleiten. Wir nehmen uns gerne Zeit, um eine friedliche Basis bei sQRrow zu pflegen!"},
+    {"title" : "Kontakt" , "content" : "Für weitere offene Fragen kannst du uns telefonisch oder per E-mail kontaktieren: Mail: www.muster@web.de Tel: XXXXXX"}
+  ]
+
+}

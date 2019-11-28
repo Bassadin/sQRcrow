@@ -3,20 +3,38 @@
         <v-layout wrap text-center>
             <v-flex xs12>
                 <h1>Hilfe und Support</h1>
-                <h2>Gibt es ein problem?</h2>
-                <p>Dann wende dich an den Support: ...</p>
-                <h2>Ist dir jemand ausfälliges aufgefallen?</h2>
-                <p>Dann melde die Person X hier</p>
-                <h2>AGB</h2>
-                <p>...</p>
+                <br />
+
+                <div id="app">
+                    <v-app id="inspire">
+                        <v-expansion-panels>
+                            <v-expansion-panel
+                                v-for="item in helpData"
+                                :key="item"
+                            >
+                                <v-expansion-panel-header>{{
+                                    item.title
+                                }}</v-expansion-panel-header>
+                                <v-expansion-panel-content>
+                                    {{ item.content }}
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                        </v-expansion-panels>
+                    </v-app>
+                </div>
             </v-flex>
         </v-layout>
     </div>
 </template>
 
 <script>
+var helpDataJson = require('../database/test');
+
 export default {
-    name: 'Help'
+    name: 'Help',
+    data() {
+        return { helpData: helpDataJson.items };
+    }
 };
 </script>
 
