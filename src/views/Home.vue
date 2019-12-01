@@ -1,7 +1,15 @@
 <template>
 
     <v-row justify="center">
+
+
         <v-col cols="12" sm="8" md="6">
+
+            <div class="header">
+                <h1>Willkommen im Kommentarbereich</h1>
+            </div>
+
+            <div class="comments">
             <v-card>
                 <v-toolbar color="navy" dark>
 
@@ -42,6 +50,7 @@
                     </template>
                 </v-list>
             </v-card>
+            </div>
         </v-col>
     </v-row>
 </template>
@@ -106,5 +115,15 @@
 
 <style>
 
+    .header {
+
+       margin-left: 70px;
+    }
+
+    .comments {
+        margin-left: 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
 
 </style>
