@@ -2,7 +2,6 @@
 
     <v-row justify="center">
 
-
         <v-col cols="12" sm="8" md="6">
 
             <div class="header">
@@ -51,8 +50,21 @@
                 </v-list>
             </v-card>
             </div>
+
+            <div class="footer">
+                <v-footer padless>
+                    <v-col
+                            class="text-center"
+                            cols="12"
+                    >
+                        {{ new Date().getFullYear() }} — <strong>sQRcrow</strong>
+                    </v-col>
+                </v-footer>
+            </div>
+
         </v-col>
     </v-row>
+
 </template>
 
 <script>
@@ -126,4 +138,10 @@
         margin-bottom: 50px;
     }
 
+    .footer {
+
+        position: center;
+        bottom: 0;
+        width: 100%;
+    }
 </style>
