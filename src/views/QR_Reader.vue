@@ -4,6 +4,9 @@
             <v-flex xs12>
                 <QRCodeReader />
             </v-flex>
+            <h3>
+                Doesn't work? Click <a href="../src/views/CameraGuide">here</a>
+            </h3>
         </v-layout>
     </div>
 </template>
