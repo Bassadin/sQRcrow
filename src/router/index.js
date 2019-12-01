@@ -6,6 +6,7 @@ import Maps from '../views/Maps.vue';
 import Impressum from '../views/Impressum.vue';
 import Help from '../views/Help.vue';
 import NoConnection from '../views/NoConnection';
+import TroubleShooting from '../views/TroubleShooting';
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
         path: '/no_connection',
         name: 'NoConnection',
         component: NoConnection
+    },
+    {
+        path: '/QR_TroubleShooting',
+        name: 'TroubleShooting',
+        component: TroubleShooting
     }
 ];
 

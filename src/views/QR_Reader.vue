@@ -5,7 +5,7 @@
                 <QRCodeReader />
             </v-flex>
             <h3>
-                Doesn't work? Click <a href="../src/views/CameraGuide">here</a>
+                Doesn't work? Click <a href="TroubleShooting.vue">here</a>
             </h3>
         </v-layout>
     </div>
