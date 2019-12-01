@@ -116,10 +116,10 @@
 <style>
 
     .header {
-
        margin-left: 70px;
+        color: #00023B;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
-
     .comments {
         margin-left: 50px;
         margin-top: 50px;
