@@ -9,7 +9,6 @@
         <v-form v-model="valid">
                 <v-card>
 
-
                     <v-col
                             cols="12"
                             md="4"
@@ -53,6 +52,17 @@
 
         </v-form>
 
+        <div class="footer">
+        <v-footer padless>
+            <v-col
+                    class="text-center"
+                    cols="12"
+            >
+                {{ new Date().getFullYear() }} — <strong>sQRcrow</strong>
+            </v-col>
+        </v-footer>
+        </div>
+
     </div>
 
 
@@ -74,17 +84,17 @@
 <style scoped>
 
     .mr-4 {
-        margin-left: 420px;
-        background-color: rgba(0, 0, 50, 0.2);
+        margin-left: 600px;
+        background-color: rgba(50, 50, 50, 0.2);
         padding-bottom: 20px;
     }
 
     .col-xl {
-        margin-left: 300px;
+        margin-left: 430px;
     }
 
     .col-xl-1{
-        margin-left: 300px;
+        margin-left: 430px;
     }
 
     .h1 {
@@ -99,8 +109,10 @@
         color: #00023B;
     }
 
-    .Login {
-        background-color: rgba(90, 20, 10, 0.4);
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
     }
 
 </style>
