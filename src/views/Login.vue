@@ -7,7 +7,8 @@
         <p>Log in to your account</p>
         </div>
         <v-form v-model="valid">
-                <v-container>
+                <v-card>
+
 
                     <v-col
                             cols="12"
@@ -48,18 +49,25 @@
 
                     <v-btn class="mr-4" tile outlined color="" @click="submit" >Okay</v-btn>
 
-            </v-container>
+            </v-card>
 
         </v-form>
 
     </div>
+
+
+
+
 </template>
 
 
 <script>
-    export default {
+   export default {
         name: 'Login',
     };
+
+
+
 </script>
 
 
@@ -94,4 +102,5 @@
     .Login {
         background-color: rgba(90, 20, 10, 0.4);
     }
+
 </style>
