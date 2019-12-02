@@ -1,10 +1,6 @@
 <template>
-    <div class="QR_Reader" style="margin:0 auto;">
-        <v-layout text-center wrap>
-            <v-flex xs12>
-                <QRCodeReader />
-            </v-flex>
-        </v-layout>
+    <div class="QR_Reader">
+        <QRCodeReader id="qr-reader-component" />
     </div>
 </template>
 
@@ -18,3 +14,17 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+#qr-reader-component {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.QR_Reader {
+    height: 100%;
+    width: 100%;
+}
+</style>
