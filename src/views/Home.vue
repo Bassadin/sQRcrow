@@ -19,7 +19,7 @@
                     the qr code scanner
                 </p>
             </v-flex>
-            <v-container cols="6" fluid>
+            <v-container fluid>
                 <v-row>
                     <v-col
                         max-height="auto"

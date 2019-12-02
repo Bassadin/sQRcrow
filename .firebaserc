@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "sqrcrow": "sqrcrow-7c7f8"
+  },
+  "targets": {
+    "sqrcrow-7c7f8": {
+      "hosting": {
+        "sqrcrow": [
+          "sqrcrow-gamma"
+        ]
+      }
+    }
+  }
+}

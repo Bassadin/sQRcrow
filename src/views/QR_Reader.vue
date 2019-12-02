@@ -21,3 +21,17 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+#qr-reader-component {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.QR_Reader {
+    height: 100%;
+    width: 100%;
+}
+</style>
