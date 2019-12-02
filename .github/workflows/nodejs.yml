@@ -1,9 +1,6 @@
 name: Firebase Hosting
 
 on:
-    pull_request:
-        branches:
-            - master
     push:
         branches:
             - master
@@ -39,6 +36,6 @@ jobs:
             - name: Deploy to Firebase
               uses: w9jds/firebase-action@master
               with:
-                  args: deploy --only hosting:sqrcrow-gamma --project sqrcrow-7c7f8
+                  args: deploy --only hosting:sqrcrow
               env:
                   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

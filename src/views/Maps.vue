@@ -9,22 +9,19 @@
             @update:center="centerUpdate"
             @update:zoom="zoomUpdate"
         >
-            <l-tile-layer :url="url" :attribution="attribution" />
-
-            <l-marker :lat-lng="userCoordinates" :icon="userLocationIcon">
-                <l-popup>
-                    <div @click="innerClick">Your Location</div>
-                </l-popup>
-            </l-marker>
+            <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
 
             <l-marker
-                v-for="marker in markers"
-                v-bind:lat-lng="marker.coordinates"
+                v-for="marker in qrCodeLocations"
+                v-bind:lat-lng="[
+                    marker.location.latitude,
+                    marker.location.longitude
+                ]"
                 v-bind:key="marker.id"
                 :icon="qrCodeLocationIcon"
             >
                 <l-popup>
-                    <div @click="innerClick">{{ marker.content }}</div>
+                    <div @click="innerClick">{{ marker.name }}</div>
                 </l-popup>
             </l-marker>
         </l-map>
@@ -32,53 +29,48 @@
 </template>
 
 <script>
-import { latLng } from 'leaflet';
+import * as Leaflet from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
-import L from 'leaflet';
+
+//Firestore
+import { db } from '../db';
 
 export default {
     name: 'maps',
     components: {
         LMap,
-        LTileLayer,
         LMarker,
-        LPopup
+        LPopup,
+        LTileLayer
     },
     data() {
         return {
-            userLocationIcon: L.icon({
+            userLocationIcon: Leaflet.icon({
                 iconUrl: require('@/assets/map-icons/target.svg'),
                 iconSize: [32, 32],
                 iconAnchor: [16, 0]
             }),
-            qrCodeLocationIcon: L.icon({
+            qrCodeLocationIcon: Leaflet.icon({
                 iconUrl: require('@/assets/map-icons/qr-code.svg'),
                 iconSize: [32, 32],
                 iconAnchor: [16, 0]
             }),
             zoom: 14,
-            center: latLng(48.05162, 8.20798),
+            center: { lat: 48.05162, lng: 8.20798 },
             url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
             attribution:
                 '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             currentZoom: 7,
-            currentCenter: latLng(47.41322, -1.219482),
+            currentCenter: { lat: 47.41322, lng: -1.219482 },
             mapOptions: {
                 zoomSnap: 0.2
             },
             showMap: true,
-            userCoordinates: latLng(48.05162, 8.20798),
-            markers: [
-                {
-                    coordinates: latLng(48.05162, 8.20798),
-                    content: 'Cursed Clocktower'
-                },
-                {
-                    coordinates: latLng(48.04, 8.208),
-                    content: 'Student Flats of DOOM'
-                }
-            ]
+            qrCodeLocations: []
         };
+    },
+    firestore: {
+        qrCodeLocations: db.collection('qr-codes')
     },
     methods: {
         zoomUpdate(zoom) {
@@ -90,18 +82,13 @@ export default {
         innerClick() {
             // alert('Click!');
         }
-    },
-    mounted() {
-        this.$watchLocation({
-            enableHighAccuracy: true
-        }).then(coordinates => {
-            this.userCoordinates = coordinates;
-        });
     }
 };
 </script>
 
 <style scoped>
+@import '~leaflet/dist/leaflet.css';
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
 .maps {
     width: 100%;
     height: 100%;

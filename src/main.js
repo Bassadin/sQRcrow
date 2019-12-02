@@ -4,6 +4,10 @@ import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
 
+//Firebase
+import { firestorePlugin } from 'vuefire';
+Vue.use(firestorePlugin);
+
 //vue-meta
 import VueMeta from 'vue-meta';
 Vue.use(VueMeta, {
@@ -11,16 +15,11 @@ Vue.use(VueMeta, {
     refreshOnceOnNavigation: true
 });
 
-//Geolocation
-import VueGeolocation from 'vue-browser-geolocation';
-Vue.use(VueGeolocation);
-
 //Load Leaflet Stuff
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
-import 'leaflet/dist/leaflet.css';
-Vue.component('l-map', LMap);
-Vue.component('l-tile-layer', LTileLayer);
-Vue.component('l-marker', LMarker);
+import * as Vue2Leaflet from 'vue2-leaflet';
+Vue.use(Vue2Leaflet);
+import * as Leaflet from 'leaflet';
+Vue.use(Leaflet);
 
 // eslint-disable-next-line
 delete L.Icon.Default.prototype._getIconUrl;

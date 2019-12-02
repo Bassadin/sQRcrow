@@ -1,9 +1,9 @@
 <template>
     <v-app id="nvaigation">
         <v-navigation-drawer id="nav-drawer" v-model="drawer" app clipped>
-            <v-list dense>
+            <v-list>
                 <v-list-item
-                    v-for="page in pages"
+                    v-for="page in mainPages"
                     :key="page.text"
                     :to="page.to"
                     link
@@ -16,6 +16,26 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
+            <template v-slot:append>
+                <v-divider></v-divider>
+                <v-list dense>
+                    <v-list-item
+                        v-for="page in lowerPages"
+                        :key="page.text"
+                        :to="page.to"
+                        link
+                    >
+                        <v-list-item-action>
+                            <v-icon>{{ page.icon }}</v-icon>
+                        </v-list-item-action>
+                        <v-list-item-content>
+                            <v-list-item-title>{{
+                                page.text
+                            }}</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
+            </template>
         </v-navigation-drawer>
 
         <v-app-bar app clipped-left color="#0D1F2D" dense>
@@ -57,12 +77,24 @@ export default {
     },
     data: () => ({
         drawer: null,
-        pages: [
+        mainPages: [
             { icon: 'mdi-home', text: 'Home', to: '/' },
             { icon: 'mdi-qrcode-scan', text: 'QR-Scanner', to: '/QR_Reader' },
             { icon: 'mdi-map-search', text: 'Map', to: '/maps' },
-            { icon: 'mdi-account', text: 'Login', to: '/Login' },
-            { icon: 'mdi-account-group', text: 'Join', to: '/Join' }
+            {
+                icon: 'mdi-access-point-network',
+                text: 'Server Status',
+                to: '/no_connection'
+            }
+            //Change if server status is done, default is /no_connection
+        ],
+        lowerPages: [
+            {
+                icon: 'mdi-information-outline',
+                text: 'Impressum',
+                to: '/impressum'
+            },
+            { icon: 'mdi-help-circle-outline', text: 'Help', to: '/help' }
         ]
     })
 };

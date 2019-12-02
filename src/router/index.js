@@ -3,8 +3,9 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import QR_Reader from '../views/QR_Reader.vue';
 import Maps from '../views/Maps.vue';
-import Login from '../views/Login.vue';
-import Join from '../views/Join.vue';
+import Impressum from '../views/Impressum.vue';
+import Help from '../views/Help.vue';
+import NoConnection from '../views/NoConnection';
 
 Vue.use(VueRouter);
 
@@ -25,14 +26,19 @@ const routes = [
         component: Maps
     },
     {
-        path: '/Login',
-        name: '/Login',
-        component: Login
+        path: '/impressum',
+        name: 'impressum',
+        component: Impressum
     },
     {
-        path: '/Join',
-        name: '/Join',
-        component: Join
+        path: '/help',
+        name: 'help',
+        component: Help
+    },
+    {
+        path: '/no_connection',
+        name: 'NoConnection',
+        component: NoConnection
     }
 ];
 
