@@ -61,8 +61,8 @@ export default {
             { icon: 'mdi-home', text: 'Home', to: '/' },
             { icon: 'mdi-qrcode-scan', text: 'QR-Scanner', to: '/QR_Reader' },
             { icon: 'mdi-map-search', text: 'Map', to: '/maps' },
-            { icon: 'mdi-account', text: 'Login', to: '/Login'},
-            { icon: 'mdi-account-group', text: 'Join', to: '/Join'}
+            { icon: 'mdi-account', text: 'Login', to: '/Login' },
+            { icon: 'mdi-account-group', text: 'Join', to: '/Join' }
         ]
     })
 };
@@ -76,7 +76,8 @@ export default {
     margin: 0 22px 22px 0;
 }
 
-#nav-drawer, #qr-fab {
+#nav-drawer,
+#qr-fab {
     z-index: 3000; /* Make navbar hover above the map (and everything else) on mobile */
 }
 </style>
