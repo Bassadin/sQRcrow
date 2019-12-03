@@ -28,7 +28,7 @@
                                     <v-text-field
                                             label="Benutzername"
                                             name="login"
-                                            prepend-icon=""
+                                            prepend-icon="mdi-account-circle"
                                             type="text"
                                     />
 
@@ -36,7 +36,7 @@
                                             id="password"
                                             label="Passwort"
                                             name="password"
-                                            prepend-icon=""
+                                            prepend-icon="mdi-lock"
                                             type="password"
                                     />
                                 </v-form>
