@@ -24,18 +24,18 @@
                             <v-card-text>
                                 <v-form>
                                     <v-text-field
-                                            id="vorname"
+                                            id="forename"
                                             label="Vorname"
-                                            name="vorname"
+                                            name="forename"
                                             prepend-icon="mdi-account-box"
-                                            type="vorname"
+                                            type="forename"
                                     />
                                     <v-text-field
-                                            id="name"
+                                            id="familyname"
                                             label="Nachname"
-                                            name="name"
+                                            name="familyname"
                                             prepend-icon="mdi-account-box"
-                                            type="name"
+                                            type="familyname"
                                     />
                                     <v-text-field
                                             id="email"
@@ -45,10 +45,11 @@
                                             type="email"
                                     />
                                     <v-text-field
+                                            id ="username"
                                             label="Benutzername"
-                                            name="login"
+                                            name="username"
                                             prepend-icon="mdi-account-circle"
-                                            type="text"
+                                            type="username"
                                     />
 
                                     <v-text-field
@@ -57,9 +58,16 @@
                                             name="password"
                                             prepend-icon="mdi-lock"
                                             type="password"
+                                            state="text.length >= 10"
                                     />
                                 </v-form>
                             </v-card-text>
+
+                            <div class="check">
+                                <input type="checkbox" id="checkbox" v-model="checked">
+                                <label for="checkbox">{{ label=" ich habe die AGB gelesen und akzeptiere diese" }}</label>
+                            </div>
+
                             <v-card-actions>
                                 <v-spacer />
                                 <div class="btn">
@@ -93,6 +101,7 @@
 
 export default {
     name: 'Join'
+
 };
 
 </script>
@@ -105,7 +114,7 @@ export default {
 
     .welcome {
         position: center;
-        padding-left: 50px;
+        padding-left: 30px;
     }
 
     .next {
@@ -113,14 +122,15 @@ export default {
         padding-bottom: 50px;
     }
 
-.check {
-    margin-left: 500px;
-}
-
 .footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.check {
+    padding-left: 22px;
+    padding-bottom: 10px;
 }
 
 .btn {
