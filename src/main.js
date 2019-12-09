@@ -21,6 +21,9 @@ Vue.use(Vue2Leaflet);
 import * as Leaflet from 'leaflet';
 Vue.use(Leaflet);
 
+import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol';
+Vue.use(Vue2LeafletLocatecontrol);
+
 // eslint-disable-next-line
 delete L.Icon.Default.prototype._getIconUrl;
 // eslint-disable-next-line

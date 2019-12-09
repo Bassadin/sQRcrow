@@ -8,7 +8,9 @@
             style="width:100%;height:100%"
             @update:center="centerUpdate"
             @update:zoom="zoomUpdate"
+            @mouseup="mapClick"
         >
+            <v-locatecontrol />
             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
 
             <l-marker
@@ -31,6 +33,7 @@
 <script>
 import * as Leaflet from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
+import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol/Vue2LeafletLocatecontrol';
 
 //Firestore
 import { db } from '../db';
@@ -41,7 +44,8 @@ export default {
         LMap,
         LMarker,
         LPopup,
-        LTileLayer
+        LTileLayer,
+        'v-locatecontrol': Vue2LeafletLocatecontrol
     },
     data() {
         return {
@@ -81,6 +85,10 @@ export default {
         },
         innerClick() {
             // alert('Click!');
+        },
+        mapClick(mouseEvent) {
+            console.log(mouseEvent);
+            //new Leaflet.marker(mouseEvent.latlng).addTo(map);
         }
     }
 };
