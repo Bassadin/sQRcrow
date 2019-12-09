@@ -23,7 +23,7 @@
                 :icon="qrCodeLocationIcon"
             >
                 <l-popup>
-                    <div @click="innerClick">{{ marker.name }}</div>
+                    <div>{{ marker.name }}</div>
                 </l-popup>
             </l-marker>
         </l-map>
@@ -82,13 +82,6 @@ export default {
         },
         centerUpdate(center) {
             this.currentCenter = center;
-        },
-        innerClick() {
-            // alert('Click!');
-        },
-        mapClick(mouseEvent) {
-            console.log(mouseEvent);
-            //new Leaflet.marker(mouseEvent.latlng).addTo(map);
         }
     }
 };
