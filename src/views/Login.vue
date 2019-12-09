@@ -1,10 +1,6 @@
 <template>
-
-
     <div class="Login">
-
         <v-content>
-
             <v-container class="fill-height" fluid>
 
                 <v-row align="center" justify="center">
@@ -32,23 +28,30 @@
                                             name="login"
                                             prepend-icon="mdi-account-circle"
                                             type="text"
-                                    />
 
+                                    />
+                                    <!--Hide or show password-->
                                     <v-text-field
                                             id="password"
                                             label="Passwort"
                                             name="password"
+                                            :value="myPass"
                                             prepend-icon="mdi-lock"
-                                            type="password"
+                                            :append-icon="value ? 'mdi-visibility' : 'visibility-off'"
+                                            @click:append="() => (value = !value)"
+                                            :type="value ? 'password' : 'text'"
+
+
                                     />
                                 </v-form>
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer />
                                 <div class="btn">
-                                <v-btn color="#546e7a" type="flat" icon="">Login</v-btn>
+                                 <v-btn color="#546e7a" icon="">Login</v-btn>
                                 </div>
                             </v-card-actions>
+
                         </v-card>
 
                         <div class="next text-center">
@@ -78,14 +81,18 @@
         props: {
             source: String,
         },
-    };
+        data() {
+            return {
+                value: String
+            };
+        }
+    }
 </script>
 
 <style scoped>
 
     .h1 {
         padding-bottom: 50px;
-
     }
 
 .next {
@@ -99,9 +106,8 @@
 }
 
 .welcome {
-   position: center;
+    position: center;
     padding-left: 50px;
-    color: ;
 }
 
     .btn {
