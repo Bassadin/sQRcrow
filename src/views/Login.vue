@@ -1,99 +1,134 @@
 <template>
     <div class="Login">
-        <div class="h1">
-            <h1>Log in</h1>
-        </div>
+        <v-content>
+            <v-container class="fill-height" fluid>
 
-        <div class="p">
-            <p>Melde dich mit deinem Account an</p>
-        </div>
+                <v-row align="center" justify="center">
 
-        <v-form v-model="valid">
-            <v-card>
-                <v-col cols="12" md="4">
-                    <div class="col-xl">
-                        <v-text-field
-                            v-model="username"
-                            :error-messages="nameErrors"
-                            :rules="nameRules"
-                            label="Benutzername"
-                            required
-                            @input="$v.name.$touch()"
-                            @blur="$v.name.$touch()"
-                        ></v-text-field>
+                    <v-col cols="12" sm="8" md="4">
+
+                        <v-flex mb-4>
+                            <div class="h1 headline text-center">
+                                <h1>Log in</h1>
+                            </div>
+                        </v-flex>
+
+                        <v-card class="elevation-12">
+                            <v-toolbar color="#546e7a" light >
+                                <div class="welcome">
+                                <v-toolbar-title>Willkommen bei sQRcrow</v-toolbar-title>
+                                </div>
+                                <v-spacer />
+
+                            </v-toolbar>
+                            <v-card-text>
+                                <v-form ref="form"
+                                        v-model="valid">
+
+                                    <!-- <v-text-field label="name"  -->
+
+                                    <v-text-field
+                                            label="Benutzername"
+                                            name="login"
+                                            :rules="nameRules"
+                                            prepend-icon="mdi-account-circle"
+                                            type="text"
+                                    />
+                                    <!--Hide or show password-->
+                                    <v-text-field
+                                            id="password"
+                                            label="Passwort"
+                                            name="password"
+                                            :value="myPass"
+                                            :rules="passwordRules"
+                                            prepend-icon="mdi-lock"
+                                            :append-icon="value ? 'mdi-eye-off' : 'mdi-eye'"
+                                            @click:append="() => (value = !value)"
+                                            :type="value ? 'password' : 'text'"
+                                            :counter="10"
+                                    />
+                                </v-form>
+                            </v-card-text>
+
+                            <v-card-actions>
+                                <v-spacer/>
+
+                                <div class="btn">
+                                    <v-btn color="#546e7a" icon=""
+                                           @click="register">Login</v-btn>
+                                </div>
+
+                            </v-card-actions>
+                        </v-card>
+
+                        <div class="next text-center">
+                          <p>Noch keinen Account? Melde dich <a href="/Join">hier</a> kostenlos an</p>
+                        </div>
+
+                    </v-col>
+
+                    <div class="footer">
+                        <v-footer padless>
+                            <v-col class="text-center" cols="12">
+                                {{ new Date().getFullYear() }} — <strong>©sQRcrow</strong>
+                            </v-col>
+                        </v-footer>
                     </div>
-                </v-col>
 
-                <v-col cols="12" md="4">
-                    <div class="col-xl-1">
-                        <v-text-field
-                            v-model="password"
-                            :error-messages="nameErrors"
-                            :rules="nameRules"
-                            label="Passwort"
-                            required
-                            @input="$v.name.$touch()"
-                            @blur="$v.name.$touch()"
-                        ></v-text-field>
-                    </div>
-                </v-col>
+                </v-row>
+            </v-container>
+        </v-content>
 
-                <div class="btn">
-                    <v-btn class="mr-4" @click="submit">Okay</v-btn>
-                </div>
-            </v-card>
-        </v-form>
-
-        <div class="footer">
-            <v-footer padless>
-                <v-col class="text-center" cols="12">
-                    {{ new Date().getFullYear() }} — <strong>sQRcrow</strong>
-                </v-col>
-            </v-footer>
-        </div>
-    </div>
+</div>
 </template>
 
 <script>
-export default {
-    name: 'Login'
-};
+    export default {
+        name: 'Login',
+        props: {
+            source: String,
+        },
+
+        //oder data() => ({ statt return
+        data() {
+            return {
+                value: String,
+                valid: true,
+                nameRules: [
+                    v => !!v || 'Name is requiered',
+                ],
+
+                passwordRules: [
+                    v => !!v || 'Password is requiered',
+                ],
+            };
+        },
+    }
 </script>
 
 <style scoped>
-.mr-4 {
-    margin-left: 600px;
-    background-color: rgba(50, 50, 50, 0.2);
-    padding-bottom: 20px;
-}
 
-.col-xl {
-    margin-left: 430px;
-}
+    .h1 {
+        padding-bottom: 50px;
+    }
 
-.col-xl-1 {
-    margin-left: 430px;
-}
-
-.h1 {
-    margin-left: 590px;
-    margin-top: 80px;
+    .next {
     padding-top: 20px;
-    color: #00023b;
 }
 
-.p {
-    margin-left: 520px;
-    color: #00023b;
-}
-
-.footer {
-    position: absolute;
+    .footer {
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-.btn {
-    padding-bottom: 15px;
+    .welcome {
+
+    padding-left: 70px;
 }
+
+    .btn {
+        width: 53%;
+    }
+
 </style>
