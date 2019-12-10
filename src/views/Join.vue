@@ -22,30 +22,34 @@
 
                             </v-toolbar>
                             <v-card-text>
-                                <v-form>
+                                <v-form ref="form"
+                                        v-model="valid">
                                     <v-text-field
-                                            id="forename"
+                                            v-model="forename"
                                             label="Vorname"
+                                            :rules="nameRules"
                                             name="forename"
                                             prepend-icon="mdi-account-box"
                                             type="forename"
                                     />
                                     <v-text-field
-                                            id="familyname"
+                                            v-model="familyname"
                                             label="Nachname"
+                                            :rules="nameRules"
                                             name="familyname"
                                             prepend-icon="mdi-account-box"
                                             type="familyname"
                                     />
                                     <v-text-field
-                                            id="email"
                                             label="E-Mail"
+                                            :rules="emailRules"
                                             name="email"
                                             prepend-icon="mdi-email"
                                             type="email"
                                     />
                                     <v-text-field
-                                            id ="username"
+                                            v-model="username"
+                                            :rules="nameRules"
                                             label="Benutzername"
                                             name="username"
                                             prepend-icon="mdi-account-circle"
@@ -53,25 +57,27 @@
                                     />
 
                                     <v-text-field
-                                            id="password"
                                             label="Passwort"
                                             name="password"
+                                            :rules="passwordRules"
                                             prepend-icon="mdi-lock"
-                                            type="password"
-                                            state="text.length >= 10"
+                                            :append-icon="value ? 'mdi-eye-off' : 'mdi-eye'"
+                                            @click:append="() => (value = !value)"
+                                            :type="value ? 'password' : 'text'"
+                                            :counter="10"
                                     />
                                 </v-form>
                             </v-card-text>
 
                             <div class="check">
-                                <input type="checkbox" id="checkbox" v-model="checked">
+                                <input type="checkbox" id="checkbox" v-model="checked" :rules="[v => !!v || 'Du musst zustimmen, um fortzufahren!']">
                                 <label for="checkbox">{{ label=" ich habe die AGB gelesen und akzeptiere diese" }}</label>
                             </div>
 
                             <v-card-actions>
                                 <v-spacer />
                                 <div class="btn">
-                                    <v-btn color="#546e7a" icon="">registrieren</v-btn>
+                                    <v-btn color="#546e7a" icon="" @click="validate">registrieren</v-btn>
                                 </div>
                             </v-card-actions>
                         </v-card>
@@ -99,10 +105,56 @@
 
 <script>
 
-export default {
-    name: 'Join'
+  //  import db from '../db'
 
-};
+export default {
+    name: 'Join',
+
+    data() {
+        return {
+            value: String,
+            valid: true,
+            forename: '',
+            familyname: '',
+            username: '',
+
+            nameRules: [
+                v => !!v || 'Name is requiered',
+                //v => (v && v.length <= 10 || 'Name must be less than 10 characters')
+            ],
+            emailRules: [
+                v => !!v || 'E-Mail is requiered',
+                v => (v && v.length <= 10 || 'Name must be less than 10 characters')
+            ],
+
+            passwordRules: [
+                v => !!v || 'Password is requiered',
+                v => (v && v.length <= 10 || 'Password must be less than 10 characters')
+            ],
+
+        };
+    },
+
+methods: {
+    validate (){
+        if (this.$refs.form.validate()) {
+            console.debug
+            this.register
+        }
+    }
+},
+
+ //   register: (){
+ //   let userData = {
+ //       userName: this.username,
+ //       password: this.password,
+ //   }
+//},
+
+    //selectionRules: {
+    //   value => !!value || 'Field is required',
+    //}
+}
 
 </script>
 
@@ -119,21 +171,21 @@ export default {
 
     .next {
         padding-top: 20px;
-        padding-bottom: 50px;
+        padding-bottom: 100px;
     }
 
-.footer {
+    .footer {
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-.check {
+    .check {
     padding-left: 22px;
     padding-bottom: 10px;
 }
 
-.btn {
+    .btn {
     width: 53%;
 }
 

@@ -22,13 +22,17 @@
 
                             </v-toolbar>
                             <v-card-text>
-                                <v-form>
+                                <v-form ref="form"
+                                        v-model="valid">
+
+                                    <!-- <v-text-field label="name"  -->
+
                                     <v-text-field
                                             label="Benutzername"
                                             name="login"
+                                            :rules="nameRules"
                                             prepend-icon="mdi-account-circle"
                                             type="text"
-
                                     />
                                     <!--Hide or show password-->
                                     <v-text-field
@@ -36,22 +40,25 @@
                                             label="Passwort"
                                             name="password"
                                             :value="myPass"
+                                            :rules="passwordRules"
                                             prepend-icon="mdi-lock"
-                                            :append-icon="value ? 'mdi-visibility' : 'visibility-off'"
+                                            :append-icon="value ? 'mdi-eye-off' : 'mdi-eye'"
                                             @click:append="() => (value = !value)"
                                             :type="value ? 'password' : 'text'"
-
-
+                                            :counter="10"
                                     />
                                 </v-form>
                             </v-card-text>
-                            <v-card-actions>
-                                <v-spacer />
-                                <div class="btn">
-                                 <v-btn color="#546e7a" icon="">Login</v-btn>
-                                </div>
-                            </v-card-actions>
 
+                            <v-card-actions>
+                                <v-spacer/>
+
+                                <div class="btn">
+                                    <v-btn color="#546e7a" icon=""
+                                           @click="register">Login</v-btn>
+                                </div>
+
+                            </v-card-actions>
                         </v-card>
 
                         <div class="next text-center">
@@ -81,11 +88,21 @@
         props: {
             source: String,
         },
+
+        //oder data() => ({ statt return
         data() {
             return {
-                value: String
+                value: String,
+                valid: true,
+                nameRules: [
+                    v => !!v || 'Name is requiered',
+                ],
+
+                passwordRules: [
+                    v => !!v || 'Password is requiered',
+                ],
             };
-        }
+        },
     }
 </script>
 
@@ -95,19 +112,19 @@
         padding-bottom: 50px;
     }
 
-.next {
+    .next {
     padding-top: 20px;
 }
 
-.footer {
+    .footer {
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-.welcome {
-    position: center;
-    padding-left: 50px;
+    .welcome {
+
+    padding-left: 70px;
 }
 
     .btn {
