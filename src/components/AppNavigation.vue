@@ -94,7 +94,9 @@ export default {
                 text: 'Impressum',
                 to: '/impressum'
             },
-            { icon: 'mdi-help-circle-outline', text: 'Help', to: '/help' }
+            { icon: 'mdi-help-circle-outline', 
+            text: 'Help', 
+            to: '/help' }
         ]
     })
 };

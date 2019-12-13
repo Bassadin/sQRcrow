@@ -40,6 +40,7 @@ const routes = [
         name: 'NoConnection',
         component: NoConnection
     }
+    
 ];
 
 const router = new VueRouter({

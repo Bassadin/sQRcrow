@@ -4,7 +4,7 @@
         <v-col cols="10" sm="8" md="10">
        
             <h-layout xs12 md8 text-center wrap>
-                <div class="header">
+                <div class="text-center">
                 <h1>Hilfe und Support</h1>
                 </div>
                 <v-expansion-panels :popout="true">
@@ -38,6 +38,6 @@ export default {
 
 <style scoped>
 .header{
-    margin-left: 90px;
+  
 }
 </style>
