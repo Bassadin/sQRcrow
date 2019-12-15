@@ -6,9 +6,6 @@
             :center="center"
             :options="mapOptions"
             style="width:100%;height:100%"
-            @update:center="centerUpdate"
-            @update:zoom="zoomUpdate"
-            @mouseup="mapClick"
         >
             <v-locatecontrol />
             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
@@ -75,14 +72,6 @@ export default {
     },
     firestore: {
         qrCodeLocations: db.collection('qr-codes')
-    },
-    methods: {
-        zoomUpdate(zoom) {
-            this.currentZoom = zoom;
-        },
-        centerUpdate(center) {
-            this.currentCenter = center;
-        }
     }
 };
 </script>
