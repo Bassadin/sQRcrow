@@ -91,7 +91,6 @@ export default {
         source: String
     },
 
-    //oder data() => ({ statt return
     data() {
         return {
             value: String,
