@@ -1,4 +1,4 @@
-<template>
+e<template>
     <div class="help">
         <v-layout wrap text-center>
             <v-flex xs12>

@@ -4,9 +4,6 @@
             <v-flex xs12>
                 <QRCodeReader />
             </v-flex>
-            <h3>
-                Doesn't work? Click <a href="TroubleShooting.vue">here</a>
-            </h3>
         </v-layout>
     </div>
 </template>
@@ -16,8 +13,18 @@ import QRCodeReader from '@/components/QRCodeReader.vue';
 
 export default {
     name: 'QR_Reader',
+    data(){
+        return{dialog: false}
+    },
     components: {
         QRCodeReader
+    },
+    method:{
+        logErrors(promise) {
+            promise.catch(function() {
+
+            });
+        }
     }
 };
 </script>
@@ -33,5 +40,12 @@ export default {
 .QR_Reader {
     height: 100%;
     width: 100%;
+}
+
+h3{
+    text-align: center;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

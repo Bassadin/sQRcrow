@@ -1,18 +1,33 @@
 <template>
-    <qrcode-stream
+    <div id="QRCode">
+        <qrcode-stream
         id="qrWindow"
         :key="_uid"
         :track="paintGreenText"
         @decode="onDecode"
         @init="logErrors"
-    ></qrcode-stream>
+        ></qrcode-stream>
+        <v-dialog
+                v-model="dialog"
+                width = "500">
+            <v-card>
+                <v-card-title>
+                    Oh Oh! Something went wrong!
+                </v-card-title>
+                <v-card-text>
+                    Looks like we don't access to your camera. Please enable access to your camera via your browser.
+                </v-card-text>
+            </v-card>
+        </v-dialog>
+    </div>
 </template>
 
 <script>
 export default {
     name: 'QRCodeReader',
     data: () => ({
-        result: null
+        result: null,
+        dialog: false
     }),
     methods: {
         onDecode(decodedString) {
@@ -47,7 +62,10 @@ export default {
             ctx.fillText(this.result, centerX, centerY);
         },
         logErrors(promise) {
-            promise.catch(console.error);
+            promise.catch(function() {
+                this.dialog = !this.dialog;
+                console.log("Cykablyat");
+            });
         }
     }
 };
