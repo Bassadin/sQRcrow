@@ -40,10 +40,7 @@
 
 
                 </template>
-
-                <div class="comment-box" id="comment" >
-
-                    <v-content method="post" @submit.prevent="submit">
+                    <v-content color="grey" method="post" @submit.prevent="submit">
                         <textarea v-model="data.message" class="message" id="message" name="message" placeholder="Dein Kommentar..." required></textarea><br>
                         <!--<input v-model="data.name" class="input-name" type="text" name="name" placeholder="" required>-->
 
@@ -54,7 +51,6 @@
                         </v-card-actions>
 
                     </v-content>
-                </div>
 
             </v-list>
 
@@ -152,14 +148,9 @@
 
 <style scoped>
 
-    .comment-box {
-        padding-right: 300px;
-        position: center;
-        margin-right: 20px;
-    }
-
     .message {
-        padding-right: 250px;
+        padding-right: 230px;
+        padding-left: 20px;
     }
 
     .btn {
