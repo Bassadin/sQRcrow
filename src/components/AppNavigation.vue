@@ -85,7 +85,8 @@ export default {
                 icon: 'mdi-access-point-network',
                 text: 'Server Status',
                 to: '/no_connection'
-            }
+            },
+             { icon: 'mdi-qrcode', text: 'Codes', to: '/codes' },
             //Change if server status is done, default is /no_connection
         ],
         lowerPages: [
@@ -94,7 +95,9 @@ export default {
                 text: 'Impressum',
                 to: '/impressum'
             },
-            { icon: 'mdi-help-circle-outline', text: 'Help', to: '/help' }
+            { icon: 'mdi-help-circle-outline', 
+            text: 'Help', 
+            to: '/help' }
         ]
     })
 };
