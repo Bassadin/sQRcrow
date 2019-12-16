@@ -1,30 +1,27 @@
-e<template>
-    <div class="help">
-        <v-layout wrap text-center>
-            <v-flex xs12>
+<template>
+    <v-row justify="center">
+        <v-col cols="10" sm="8" md="10">
+       
+            <h-layout xs12 md8 text-center wrap>
+                <div class="text-center">
                 <h1>Hilfe und Support</h1>
-                <br />
-
-                <div id="app">
-                    <v-app id="inspire">
-                        <v-expansion-panels>
-                            <v-expansion-panel
-                                v-for="item in helpData"
-                                :key="item"
-                            >
-                                <v-expansion-panel-header>{{
-                                    item.title
-                                }}</v-expansion-panel-header>
-                                <v-expansion-panel-content>
-                                    {{ item.content }}
-                                </v-expansion-panel-content>
-                            </v-expansion-panel>
-                        </v-expansion-panels>
-                    </v-app>
                 </div>
-            </v-flex>
-        </v-layout>
-    </div>
+                <v-expansion-panels :popout="true">
+                    <v-expansion-panel v-for="item in helpData" :key="item">
+                        <v-expansion-panel-header>
+                            {{ item.title }}
+                        </v-expansion-panel-header>
+                        <v-expansion-panel-content>{{
+                            item.content
+                        }}</v-expansion-panel-content>
+                    </v-expansion-panel>
+                </v-expansion-panels>
+            </h-layout>
+        </v-col>
+    </v-row>
+       
+
+
 </template>
 
 <script>
@@ -38,4 +35,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.header{
+  
+}
+</style>
