@@ -45,7 +45,7 @@
                                             :append-icon="value ? 'mdi-eye-off' : 'mdi-eye'"
                                             @click:append="() => (value = !value)"
                                             :type="value ? 'password' : 'text'"
-                                            :counter="10"
+
                                     />
                                 </v-form>
                             </v-card-text>
@@ -123,7 +123,6 @@
 }
 
     .welcome {
-
     padding-left: 70px;
 }
 
