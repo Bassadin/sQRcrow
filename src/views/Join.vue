@@ -9,10 +9,12 @@
                                 <h1>Join</h1>
                             </div>
                         </v-flex>
+
                         <v-card class="elevation-12">
-                            <v-toolbar color="#546e7a" light >
+                            <v-toolbar color="#546e7a" light>
                                 <div class="welcome">
-                                    <v-toolbar-title>Registriere dich bei sQRcrow</v-toolbar-title>
+                                    <v-toolbar-title
+                                        >Registriere dich bei sQRcrow</v-toolbar-title>
                                 </div>
                                 <v-spacer />
                             </v-toolbar>
@@ -61,17 +63,23 @@
                             <v-card-actions>
                                 <v-spacer />
                                 <div class="btn">
-                                    <v-btn color="#546e7a" icon="" @click="validate">Registrieren</v-btn>
+                                    <v-btn
+                                        color="#546e7a"
+                                        icon=""
+                                        @click="validate"
+                                        >registrieren</v-btn
+                                    >
                                 </div>
                             </v-card-actions>
                         </v-card>
 
                         <div class="next text-center">
-                            <p>Du hast schon einen Account? Melde dich <a href="/Login">hier</a> an</p>
+                            <p>
+                                Du hast schon einen Account? Melde dich
+                                <a href="/Login">hier</a> an
+                            </p>
                         </div>
-
                     </v-col>
-
                 </v-row>
             </v-container>
         </v-content>
@@ -83,31 +91,29 @@
                 </v-col>
             </v-footer>
         </div>
-
     </div>
 </template>
 
-<script>
 
-    import db from '../db'
+<script>
+ import db from '../db'
 
 export default {
     name: 'Join',
-
     props: {},
-    data: () => ({
+        data: () => ({
             value: String,
             success: false,
             valid: true,
             showPassword: false,
 
-        userData: {
-            forename: '',
-            familyname: '',
-            username: '',
-            password: '',
-            isAlreadyRegistered: false
-        },
+            userData: {
+                forename: '',
+                familyname: '',
+                username: '',
+                password: '',
+                isAlreadyRegistered: false
+            },
 
             nameRules: [
                 value => (!!value && value.trim().length > 0) || 'Name is required',
@@ -118,25 +124,25 @@ export default {
                 value => (!!value && value.trim().length > 0) || 'Password is required',
                 value => (value && value.length <= 20 || 'Password must be less than 10 characters')
             ],
-    }),
+        }),
 
-methods: {
-    validate (){
-        if (this.$refs.form.validate()) {
-            console.debug('Validation success')
-            this.register()
-        }
-    }
-   },
+        methods: {
+            validate() {
+                if (this.$refs.form.validate()) {
+                    console.debug('Validation success')
+                    this.register()
+                }
+            }
+        },
 
-    register() {
-       this.userData.isAlreadyRegistered = true
-       let docRef = db.collection('User').doc(this.userData.userName)
-        docRef.set(this.userData)
-            .catch(error => console.debug('Error', error))
-            .then(() => this.success = true)
-   },
-}
+        register() {
+            this.userData.isAlreadyRegistered = true
+            let docRef = db.collection('User').doc(this.userData.userName)
+            docRef.set(this.userData)
+                .catch(error => console.debug('Error', error))
+                .then(() => this.success = true)
+        },
+};
 
 </script>
 
@@ -157,22 +163,17 @@ methods: {
     }
 
     .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
 
     .check {
-    padding-left: 22px;
-    padding-bottom: 10px;
-}
+        padding-left: 22px;
+        padding-bottom: 10px;
+    }
 
     .btn {
-    width: 53%;
-}
+    }
 
-</style>
-
-<!--@click:append="() => (value = !value)"
-                                           :type="value ? 'password' : 'text'"
-                                           :counter="10"-->
+    </style>

@@ -6,9 +6,8 @@
             :center="center"
             :options="mapOptions"
             style="width:100%;height:100%"
-            @update:center="centerUpdate"
-            @update:zoom="zoomUpdate"
         >
+            <v-locatecontrol />
             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
 
             <l-marker
@@ -21,7 +20,7 @@
                 :icon="qrCodeLocationIcon"
             >
                 <l-popup>
-                    <div @click="innerClick">{{ marker.name }}</div>
+                    <div>{{ marker.name }}</div>
                 </l-popup>
             </l-marker>
         </l-map>
@@ -31,6 +30,7 @@
 <script>
 import * as Leaflet from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
+import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol/Vue2LeafletLocatecontrol';
 
 //Firestore
 import { db } from '../db';
@@ -41,7 +41,8 @@ export default {
         LMap,
         LMarker,
         LPopup,
-        LTileLayer
+        LTileLayer,
+        'v-locatecontrol': Vue2LeafletLocatecontrol
     },
     data() {
         return {
@@ -71,17 +72,6 @@ export default {
     },
     firestore: {
         qrCodeLocations: db.collection('qr-codes')
-    },
-    methods: {
-        zoomUpdate(zoom) {
-            this.currentZoom = zoom;
-        },
-        centerUpdate(center) {
-            this.currentCenter = center;
-        },
-        innerClick() {
-            // alert('Click!');
-        }
     }
 };
 </script>
