@@ -3,7 +3,7 @@
     <v-stepper v-model="e6" vertical>
         <v-stepper-step :complete="e6 > 1" step="1">
             QR Code hinzufügen
-            <small>Scanne einen neuen QR Code um die Kommentare lesen zu können</small>
+            <small>Scanne einen neuen QR Code, um die Kommentare lesen zu können</small>
         </v-stepper-step>
 
         <v-stepper-content step="1">
