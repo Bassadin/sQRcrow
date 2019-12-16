@@ -1,5 +1,4 @@
 <template>
-
     <v-row justify="center">
         <v-col cols="10" sm="8" md="10">
        
