@@ -7,6 +7,7 @@ import Impressum from '../views/Impressum.vue';
 import Help from '../views/Help.vue';
 import NoConnection from '../views/NoConnection';
 import TroubleShooting from '../views/TroubleShooting';
+import Featured from '../views/Featured';
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes = [
         path: '/QR_TroubleShooting',
         name: 'TroubleShooting',
         component: TroubleShooting
+    },
+    {
+        path: '/Featured',
+        name: 'Featured Posts',
+        component: Featured
     }
 ];
 
