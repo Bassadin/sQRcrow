@@ -79,11 +79,15 @@ export default {
         drawer: null,
         mainPages: [
             { icon: 'mdi-home', text: 'Home', to: '/' },
-            { icon: 'mdi-collage', text: 'Featured', to: '/Featured'},
+            { icon: 'mdi-collage', text: 'Featured', to: '/Featured' },
             { icon: 'mdi-qrcode-scan', text: 'QR-Scanner', to: '/QR_Reader' },
             { icon: 'mdi-map-search', text: 'Map', to: '/maps' },
             { icon: 'mdi-qrcode', text: 'Codes', to: '/codes' },
-            { icon: 'mdi-access-point-network',text: 'Server Status',to: '/no_connection'}
+            {
+                icon: 'mdi-access-point-network',
+                text: 'Server Status',
+                to: '/no_connection'
+            }
         ],
         lowerPages: [
             {
@@ -91,9 +95,7 @@ export default {
                 text: 'Impressum',
                 to: '/impressum'
             },
-            { icon: 'mdi-help-circle-outline', 
-            text: 'Help', 
-            to: '/help' }
+            { icon: 'mdi-help-circle-outline', text: 'Help', to: '/help' }
         ]
     })
 };

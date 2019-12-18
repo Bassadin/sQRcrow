@@ -1,21 +1,20 @@
 <template>
     <div id="QRCode">
         <qrcode-stream
-        id="qrWindow"
-        :key="_uid"
-        :track="paintGreenText"
-        @decode="onDecode"
-        @init="logErrors"
+            id="qrWindow"
+            :key="_uid"
+            :track="paintGreenText"
+            @decode="onDecode"
+            @init="logErrors"
         ></qrcode-stream>
-        <v-dialog
-                v-model="dialog"
-                width = "500">
+        <v-dialog v-model="dialog" width="500">
             <v-card>
                 <v-card-title>
                     Oh Oh! Something went wrong!
                 </v-card-title>
                 <v-card-text>
-                    Looks like we don't access to your camera. Please enable access to your camera via your browser.
+                    Looks like we don't access to your camera. Please enable
+                    access to your camera via your browser.
                 </v-card-text>
             </v-card>
         </v-dialog>
@@ -64,7 +63,7 @@ export default {
         logErrors(promise) {
             promise.catch(function() {
                 this.dialog = !this.dialog;
-                console.log("Cykablyat");
+                console.log('Cykablyat');
             });
         }
     }

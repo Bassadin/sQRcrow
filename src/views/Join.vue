@@ -14,50 +14,81 @@
                             <v-toolbar color="#546e7a" light>
                                 <div class="welcome">
                                     <v-toolbar-title
-                                        >Registriere dich bei sQRcrow</v-toolbar-title>
+                                        >Registriere dich bei
+                                        sQRcrow</v-toolbar-title
+                                    >
                                 </div>
                                 <v-spacer />
                             </v-toolbar>
                             <v-card-text>
-                                <v-form ref="form"
-                                        v-model="valid">
+                                <v-form ref="form" v-model="valid">
                                     <v-text-field
-                                            v-model="userData.forename" required maxlength="25"
-                                            label="Vorname"
-                                            :rules="nameRules"
-                                            prepend-icon="mdi-account-box"
-                                            type="forename"
+                                        v-model="userData.forename"
+                                        required
+                                        maxlength="25"
+                                        label="Vorname"
+                                        :rules="nameRules"
+                                        prepend-icon="mdi-account-box"
+                                        type="forename"
                                     />
                                     <v-text-field
-                                            v-model="userData.familyname" required maxlength="25"
-                                            label="Nachname"
-                                            :rules="nameRules"
-                                            prepend-icon="mdi-account-box"
-                                            type="familyname"
+                                        v-model="userData.familyname"
+                                        required
+                                        maxlength="25"
+                                        label="Nachname"
+                                        :rules="nameRules"
+                                        prepend-icon="mdi-account-box"
+                                        type="familyname"
                                     />
                                     <v-text-field
-                                            v-model="userData.username" required maxlength="20"
-                                            :disabled="this.userData.isAlreadyRegistered"
-                                            :rules="nameRules"
-                                            label="Benutzername"
-                                            prepend-icon="mdi-account-circle"
-                                            type="username"
+                                        v-model="userData.username"
+                                        required
+                                        maxlength="20"
+                                        :disabled="
+                                            this.userData.isAlreadyRegistered
+                                        "
+                                        :rules="nameRules"
+                                        label="Benutzername"
+                                        prepend-icon="mdi-account-circle"
+                                        type="username"
                                     />
                                     <v-text-field
-                                            v-model="userData.password" required maxlength="20"
-                                            label="Passwort"
-                                            :rules="passwordRules"
-                                            prepend-icon="mdi-lock"
-                                            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                                            :type="showPassword ? 'text' : 'password'"
-                                            @click:append="showPassword = !showPassword"
+                                        v-model="userData.password"
+                                        required
+                                        maxlength="20"
+                                        label="Passwort"
+                                        :rules="passwordRules"
+                                        prepend-icon="mdi-lock"
+                                        :append-icon="
+                                            showPassword
+                                                ? 'mdi-eye'
+                                                : 'mdi-eye-off'
+                                        "
+                                        :type="
+                                            showPassword ? 'text' : 'password'
+                                        "
+                                        @click:append="
+                                            showPassword = !showPassword
+                                        "
                                     />
                                 </v-form>
                             </v-card-text>
 
                             <div class="check">
-                                <input type="checkbox" id="checkbox" v-model="checked" :rules="[v => !!v || 'Du musst zustimmen, um fortzufahren!']">
-                                <label for="checkbox">{{ label=" ich habe die AGB gelesen und akzeptiere diese" }}</label>
+                                <input
+                                    type="checkbox"
+                                    id="checkbox"
+                                    v-model="checked"
+                                    :rules="[
+                                        v =>
+                                            !!v ||
+                                            'Du musst zustimmen, um fortzufahren!'
+                                    ]"
+                                />
+                                <label for="checkbox">{{
+                                    (label =
+                                        ' ich habe die AGB gelesen und akzeptiere diese')
+                                }}</label>
                             </div>
 
                             <v-card-actions>
@@ -94,86 +125,88 @@
     </div>
 </template>
 
-
 <script>
- import db from '../db'
+import db from '../db';
 
 export default {
     name: 'Join',
     props: {},
-        data: () => ({
-            value: String,
-            success: false,
-            valid: true,
-            showPassword: false,
+    data: () => ({
+        value: String,
+        success: false,
+        valid: true,
+        showPassword: false,
 
-            userData: {
-                forename: '',
-                familyname: '',
-                username: '',
-                password: '',
-                isAlreadyRegistered: false
-            },
+        userData: {
+            forename: '',
+            familyname: '',
+            username: '',
+            password: '',
+            isAlreadyRegistered: false
+        },
 
-            nameRules: [
-                value => (!!value && value.trim().length > 0) || 'Name is required',
-                value => (value && value.length <= 20 || 'Name must be less than 10 characters')
-            ],
+        nameRules: [
+            value => (!!value && value.trim().length > 0) || 'Name is required',
+            value =>
+                (value && value.length <= 20) ||
+                'Name must be less than 10 characters'
+        ],
 
-            passwordRules: [
-                value => (!!value && value.trim().length > 0) || 'Password is required',
-                value => (value && value.length <= 20 || 'Password must be less than 10 characters')
-            ],
-        }),
+        passwordRules: [
+            value =>
+                (!!value && value.trim().length > 0) || 'Password is required',
+            value =>
+                (value && value.length <= 20) ||
+                'Password must be less than 10 characters'
+        ]
+    }),
 
-        methods: {
-            validate() {
-                if (this.$refs.form.validate()) {
-                    console.debug('Validation success')
-                    this.register()
-                }
+    methods: {
+        validate() {
+            if (this.$refs.form.validate()) {
+                console.debug('Validation success');
+                this.register();
             }
-        },
+        }
+    },
 
-        register() {
-            this.userData.isAlreadyRegistered = true
-            let docRef = db.collection('User').doc(this.userData.userName)
-            docRef.set(this.userData)
-                .catch(error => console.debug('Error', error))
-                .then(() => this.success = true)
-        },
+    register() {
+        this.userData.isAlreadyRegistered = true;
+        let docRef = db.collection('User').doc(this.userData.userName);
+        docRef
+            .set(this.userData)
+            .catch(error => console.debug('Error', error))
+            .then(() => (this.success = true));
+    }
 };
-
 </script>
 
 <style scoped>
+.h1 {
+    padding-bottom: 20px;
+}
 
-    .h1 {
-        padding-bottom: 20px;
-    }
+.welcome {
+    position: center;
+    padding-left: 30px;
+}
 
-    .welcome {
-        position: center;
-        padding-left: 30px;
-    }
+.next {
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
 
-    .next {
-        padding-top: 20px;
-        padding-bottom: 100px;
-    }
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
-    .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
+.check {
+    padding-left: 22px;
+    padding-bottom: 10px;
+}
 
-    .check {
-        padding-left: 22px;
-        padding-bottom: 10px;
-    }
-
-    .btn {
-    }
-
-    </style>
+.btn {
+}
+</style>

@@ -8,7 +8,7 @@ import Help from '../views/Help.vue';
 import NoConnection from '../views/NoConnection';
 import TroubleShooting from '../views/TroubleShooting';
 import Featured from '../views/Featured';
-import Codes from '../views/Codes'
+import Codes from '../views/Codes';
 
 Vue.use(VueRouter);
 
@@ -58,7 +58,6 @@ const routes = [
         name: 'Codes',
         component: Codes
     }
-    
 ];
 
 const router = new VueRouter({
