@@ -111,6 +111,7 @@ export default {
 
 #nav-drawer,
 #qr-fab {
-    z-index: 90000; /* Make navbar hover above the map (and everything else) on mobile */
+    /* Make navbar hover above the map (and everything else) on mobile */
+    z-index: 90000;
 }
 </style>

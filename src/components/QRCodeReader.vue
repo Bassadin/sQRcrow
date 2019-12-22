@@ -7,15 +7,24 @@
             @decode="onDecode"
             @init="logErrors"
         ></qrcode-stream>
-        <v-dialog v-model="dialog" width="500">
+        <v-dialog v-model="dialog" max-width="400">
             <v-card>
                 <v-card-title>
                     Oh Oh! Something went wrong!
                 </v-card-title>
                 <v-card-text>
-                    Looks like we don't access to your camera. Please enable
-                    access to your camera via your browser.
+                    Looks like we couldn't access your camera. Please enable
+                    access to your camera in your browser.
                 </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="red darken-1" text @click="dialog = false">
+                        Close
+                    </v-btn>
+                    <v-btn color="green darken-1" text @click="refreshView">
+                        Refresh
+                    </v-btn>
+                </v-card-actions>
             </v-card>
         </v-dialog>
     </div>
@@ -60,11 +69,11 @@ export default {
             ctx.fillStyle = '#5cb984';
             ctx.fillText(this.result, centerX, centerY);
         },
-        logErrors(promise) {
-            promise.catch(function() {
-                this.dialog = !this.dialog;
-                console.log('Cykablyat');
-            });
+        logErrors() {
+            this.dialog = true;
+        },
+        refreshView() {
+            this.$router.go();
         }
     }
 };
