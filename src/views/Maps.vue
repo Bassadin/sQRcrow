@@ -21,7 +21,7 @@
             >
                 <l-popup>
                     <img :src="marker.image" style="width:100%;height:100%;" />
-                    <div>{{ marker.name }}</div>
+                    <strong>{{ marker.name }}</strong>
                 </l-popup>
             </l-marker>
         </l-map>
