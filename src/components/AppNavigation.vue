@@ -51,8 +51,7 @@
 
             <template v-if="!this.userIsAuthenticated">
                 <v-btn color="primary" to="/login"
-                    ><v-icon left>mdi-login-variant</v-icon> Log in /
-                    Join</v-btn
+                    ><v-icon left>mdi-login-variant</v-icon> Log in</v-btn
                 >
             </template>
             <template v-else>
