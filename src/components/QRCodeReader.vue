@@ -5,7 +5,7 @@
             :key="_uid"
             :track="paintGreenText"
             @decode="onDecode"
-            @init="logErrors"
+            @init="onInit"
         ></qrcode-stream>
         <v-dialog v-model="dialog" max-width="400">
             <v-card>
@@ -13,8 +13,11 @@
                     Oh Oh! Something went wrong!
                 </v-card-title>
                 <v-card-text>
-                    Looks like we couldn't access your camera. Please enable
-                    access to your camera in your browser.
+                    <p>
+                        sQRcrow couldn't access your camera. Please enable
+                        access to your camera in your browser.
+                    </p>
+                    <strong>Error message: {{ this.error }}</strong>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -35,7 +38,8 @@ export default {
     name: 'QRCodeReader',
     data: () => ({
         result: null,
-        dialog: false
+        dialog: false,
+        error: ''
     }),
     methods: {
         onDecode(decodedString) {
@@ -69,8 +73,30 @@ export default {
             ctx.fillStyle = '#5cb984';
             ctx.fillText(this.result, centerX, centerY);
         },
-        logErrors() {
-            this.dialog = true;
+        async onInit(promise) {
+            try {
+                await promise;
+            } catch (error) {
+                if (error.name === 'NotAllowedError') {
+                    this.error =
+                        'ERROR: you need to grant camera access permisson';
+                } else if (error.name === 'NotFoundError') {
+                    this.error = 'ERROR: no camera on this device';
+                } else if (error.name === 'NotSupportedError') {
+                    this.error =
+                        'ERROR: secure context required (HTTPS, localhost)';
+                } else if (error.name === 'NotReadableError') {
+                    this.error = 'ERROR: is the camera already in use?';
+                } else if (error.name === 'OverconstrainedError') {
+                    this.error = 'ERROR: installed cameras are not suitable';
+                } else if (error.name === 'StreamApiNotSupportedError') {
+                    this.error =
+                        'ERROR: Stream API is not supported in this browser';
+                }
+                if (error) {
+                    this.dialog = true;
+                }
+            }
         },
         refreshView() {
             this.$router.go();
