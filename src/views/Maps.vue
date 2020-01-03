@@ -7,7 +7,7 @@
             :options="mapOptions"
             style="width:100%;height:100%"
         >
-            <v-locatecontrol />
+            <v-locatecontrol :options="{ showCompass: true, flyTo: true }" />
             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
 
             <l-marker
