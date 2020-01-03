@@ -5,9 +5,7 @@ import QR_Reader from '../views/QR_Reader.vue';
 import Maps from '../views/Maps.vue';
 import Impressum from '../views/Impressum.vue';
 import Help from '../views/Help.vue';
-import NoConnection from '../views/NoConnection';
 import TroubleShooting from '../views/TroubleShooting';
-import Featured from '../views/Featured';
 import Codes from '../views/Codes';
 import Login from '../views/Login';
 
@@ -40,19 +38,9 @@ const routes = [
         component: Help
     },
     {
-        path: '/no_connection',
-        name: 'NoConnection',
-        component: NoConnection
-    },
-    {
         path: '/QR_TroubleShooting',
         name: 'TroubleShooting',
         component: TroubleShooting
-    },
-    {
-        path: '/Featured',
-        name: 'Featured Posts',
-        component: Featured
     },
     {
         path: '/codes',
