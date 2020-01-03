@@ -40,7 +40,8 @@
 
                     <v-card-text>
                         <p>
-                            Upload-Datum: {{
+                            Upload-Datum:
+                            {{
                                 new Date(
                                     qrCode.creationTimestamp.seconds * 1000
                                 ).toLocaleDateString()
