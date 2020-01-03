@@ -43,18 +43,22 @@ export default new Vuex.Store({
                 });
         },
         logoutUser() {
-            firebase.auth().signOut().then(
-                () => {
+            firebase
+                .auth()
+                .signOut()
+                .then(() => {
                     this.commit('setUser', null);
-                }
-            );
+                });
+        },
+        changeUser({ commit }, payload) {
+            commit('setUser', payload);
         }
     },
     getters: {
         user(state) {
             return state.user;
         },
-        isLoggedIn: state => (state.user !== null)
+        isLoggedIn: state => state.user !== null
     },
     modules: {}
 });

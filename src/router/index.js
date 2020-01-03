@@ -9,7 +9,6 @@ import NoConnection from '../views/NoConnection';
 import TroubleShooting from '../views/TroubleShooting';
 import Featured from '../views/Featured';
 import Codes from '../views/Codes';
-import Join from '../views/Join';
 import Login from '../views/Login';
 
 Vue.use(VueRouter);
@@ -59,11 +58,6 @@ const routes = [
         path: '/codes',
         name: 'Codes',
         component: Codes
-    },
-    {
-        path: '/join',
-        name: 'Join',
-        component: Join
     },
     {
         path: '/login',
