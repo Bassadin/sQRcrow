@@ -21,17 +21,17 @@
                             </v-toolbar>
                             <v-card-text>
                                 <v-form ref="form" v-model="valid">
-                                    <!-- <v-text-field label="name"  -->
-
                                     <v-text-field
-                                        label="Benutzername"
+                                        v-model="userData.email"
+                                        label="E-Mail"
                                         name="login"
                                         :rules="nameRules"
-                                        prepend-icon="mdi-account-circle"
-                                        type="text"
+                                        prepend-icon="mdi-email"
+                                        type="email"
                                     />
                                     <!--Hide or show password-->
                                     <v-text-field
+                                        v-model="userData.password"
                                         id="password"
                                         label="Passwort"
                                         name="password"
@@ -50,15 +50,10 @@
 
                             <v-card-actions>
                                 <v-spacer />
-
-                                <div class="btn">
-                                    <v-btn
-                                        color="#546e7a"
-                                        icon=""
-                                        @click="register"
-                                        >Login</v-btn
-                                    >
-                                </div>
+                                <v-btn color="primary" @click="validate"
+                                    ><v-icon left>mdi-login-variant</v-icon>
+                                    Login</v-btn
+                                >
                             </v-card-actions>
                         </v-card>
 
@@ -69,15 +64,6 @@
                             </p>
                         </div>
                     </v-col>
-
-                    <div class="footer">
-                        <v-footer padless>
-                            <v-col class="text-center" cols="12">
-                                {{ new Date().getFullYear() }} —
-                                <strong>©sQRcrow</strong>
-                            </v-col>
-                        </v-footer>
-                    </div>
                 </v-row>
             </v-container>
         </v-content>
@@ -90,39 +76,43 @@ export default {
     props: {
         source: String
     },
-
     data() {
         return {
+            userData: {
+                email: null,
+                password: null
+            },
             value: String,
             valid: true,
-            nameRules: [v => !!v || 'Name is requiered'],
-
-            passwordRules: [v => !!v || 'Password is requiered']
+            nameRules: [v => !!v || 'Name is required'],
+            passwordRules: [v => !!v || 'Password is required']
         };
+    },
+    computed: {
+        user() {
+            return this.$store.getters.user;
+        }
+    },
+    watch: {
+        user(value) {
+            if (value != null && value != undefined) {
+                this.$router.push('/');
+            }
+        }
+    },
+    methods: {
+        validate() {
+            if (this.$refs.form.validate()) {
+                console.debug('Validation success');
+                this.login();
+            }
+        },
+        login() {
+            this.$store.dispatch('loginUser', {
+                email: this.userData.email,
+                password: this.userData.password
+            });
+        }
     }
 };
 </script>
-
-<style scoped>
-.h1 {
-    padding-bottom: 50px;
-}
-
-.next {
-    padding-top: 20px;
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-.welcome {
-    padding-left: 70px;
-}
-
-.btn {
-    width: 53%;
-}
-</style>

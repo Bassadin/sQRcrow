@@ -33,7 +33,7 @@ import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol/Vue2LeafletLocatecontrol';
 
 //Firestore
-import { db } from '../db';
+import { DB } from '../firebase/db';
 
 export default {
     name: 'maps',
@@ -71,7 +71,7 @@ export default {
         };
     },
     firestore: {
-        qrCodeLocations: db.collection('qr-codes')
+        qrCodeLocations: DB.collection('qr-codes')
     }
 };
 </script>

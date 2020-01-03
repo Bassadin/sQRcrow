@@ -23,30 +23,18 @@
                             <v-card-text>
                                 <v-form ref="form" v-model="valid">
                                     <v-text-field
-                                        v-model="userData.forename"
+                                        v-model="userData.email"
                                         required
-                                        maxlength="25"
-                                        label="Vorname"
+                                        maxlength="20"
                                         :rules="nameRules"
-                                        prepend-icon="mdi-account-box"
-                                        type="forename"
-                                    />
-                                    <v-text-field
-                                        v-model="userData.familyname"
-                                        required
-                                        maxlength="25"
-                                        label="Nachname"
-                                        :rules="nameRules"
-                                        prepend-icon="mdi-account-box"
-                                        type="familyname"
+                                        label="E-Mail"
+                                        prepend-icon="mdi-at"
+                                        type="email"
                                     />
                                     <v-text-field
                                         v-model="userData.username"
                                         required
                                         maxlength="20"
-                                        :disabled="
-                                            this.userData.isAlreadyRegistered
-                                        "
                                         :rules="nameRules"
                                         label="Benutzername"
                                         prepend-icon="mdi-account-circle"
@@ -74,37 +62,16 @@
                                 </v-form>
                             </v-card-text>
 
-                            <div class="check">
-                                <input
-                                    type="checkbox"
-                                    id="checkbox"
-                                    v-model="checked"
-                                    :rules="[
-                                        v =>
-                                            !!v ||
-                                            'Du musst zustimmen, um fortzufahren!'
-                                    ]"
-                                />
-                                <label for="checkbox">{{
-                                    (label =
-                                        ' ich habe die AGB gelesen und akzeptiere diese')
-                                }}</label>
-                            </div>
-
                             <v-card-actions>
                                 <v-spacer />
-                                <div class="btn">
-                                    <v-btn
-                                        color="#546e7a"
-                                        icon=""
-                                        @click="validate"
-                                        >registrieren</v-btn
-                                    >
-                                </div>
+                                <v-btn color="primary" @click="validate"
+                                    ><v-icon left>mdi-account-plus</v-icon>
+                                    Registrieren</v-btn
+                                >
                             </v-card-actions>
                         </v-card>
 
-                        <div class="next text-center">
+                        <div style="margin-top: 30px;" class="text-center">
                             <p>
                                 Du hast schon einen Account? Melde dich
                                 <a href="/Login">hier</a> an
@@ -114,19 +81,11 @@
                 </v-row>
             </v-container>
         </v-content>
-
-        <div class="footer">
-            <v-footer padless>
-                <v-col class="text-center" cols="12">
-                    {{ new Date().getFullYear() }} — <strong>sQRcrow</strong>
-                </v-col>
-            </v-footer>
-        </div>
     </div>
 </template>
 
 <script>
-import db from '../db';
+// import { db } from '../db';
 
 export default {
     name: 'Join',
@@ -138,11 +97,9 @@ export default {
         showPassword: false,
 
         userData: {
-            forename: '',
-            familyname: '',
+            email: '',
             username: '',
-            password: '',
-            isAlreadyRegistered: false
+            password: ''
         },
 
         nameRules: [
@@ -160,53 +117,31 @@ export default {
                 'Password must be less than 10 characters'
         ]
     }),
-
+    computed: {
+        user() {
+            return this.$store.getters.user;
+        }
+    },
+    watch: {
+        user(value) {
+            if (value != null && value != undefined) {
+                this.$router.push('/');
+            }
+        }
+    },
     methods: {
         validate() {
             if (this.$refs.form.validate()) {
                 console.debug('Validation success');
                 this.register();
             }
+        },
+        register() {
+            this.$store.dispatch('signUserUp', {
+                email: this.userData.email,
+                password: this.userData.password
+            });
         }
-    },
-
-    register() {
-        this.userData.isAlreadyRegistered = true;
-        let docRef = db.collection('User').doc(this.userData.userName);
-        docRef
-            .set(this.userData)
-            .catch(error => console.debug('Error', error))
-            .then(() => (this.success = true));
     }
 };
 </script>
-
-<style scoped>
-.h1 {
-    padding-bottom: 20px;
-}
-
-.welcome {
-    position: center;
-    padding-left: 30px;
-}
-
-.next {
-    padding-top: 20px;
-    padding-bottom: 100px;
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-.check {
-    padding-left: 22px;
-    padding-bottom: 10px;
-}
-
-.btn {
-}
-</style>

@@ -47,6 +47,16 @@
             <v-toolbar-title class="mr-12 align-center">
                 <span class="title" style="color:#FDF8E5">sQRcrow</span>
             </v-toolbar-title>
+            <v-spacer></v-spacer>
+
+            <template v-if="!this.userIsAuthenticated">
+                <v-btn color="primary" to="/join">Join</v-btn>
+                <v-btn color="primary" to="/login" class="ml-3">Log in</v-btn>
+            </template>
+            <template v-else>
+                <!-- TODO Signout -->
+                <v-btn color="warning" @click="logout">Log out</v-btn>
+            </template>
         </v-app-bar>
 
         <v-content>
@@ -97,7 +107,30 @@ export default {
             },
             { icon: 'mdi-help-circle-outline', text: 'Help', to: '/help' }
         ]
-    })
+    }),
+    computed: {
+        userIsAuthenticated() {
+            return (
+                this.$store.getters.user != null &&
+                this.$store.getters.user != undefined
+            );
+        },
+        user() {
+            return this.$store.getters.user;
+        }
+    },
+    watch: {
+        user(value) {
+            if (value == null && value == undefined) {
+                this.$router.push('/');
+            }
+        }
+    },
+    methods: {
+        logout() {
+            this.$store.dispatch('logoutUser');
+        }
+    }
 };
 </script>
 
