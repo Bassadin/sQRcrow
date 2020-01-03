@@ -18,7 +18,7 @@
                     <v-img
                         class="white--text align-end"
                         height="160px"
-                        gradient="to top, rgba(0, 0, 0, .55), rgba(0, 0, 0, 0)"
+                        gradient="to top, rgba(0, 0, 0, .63), rgba(0, 0, 0, 0)"
                         :src="qrCode.image"
                     >
                         <v-card-title class="headline" primary-title>
