@@ -23,7 +23,7 @@
         <v-stepper-content step="2">
 
            <v-content>
-               <input type="file">
+               <input type="file"><br>
            </v-content><br>
 
             <v-btn color="primary" @click="e13 = 3">Weiter</v-btn>
