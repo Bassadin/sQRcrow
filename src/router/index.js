@@ -8,7 +8,8 @@ import Help from '../views/Help.vue';
 import NoConnection from '../views/NoConnection';
 import TroubleShooting from '../views/TroubleShooting';
 import Featured from '../views/Featured';
-import Codes from '../views/Codes'
+import Codes from '../views/Codes';
+import AddQRCode from '../views/Add_QRCode';
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,11 @@ const routes = [
         path: '/codes',
         name: 'Codes',
         component: Codes
+    },
+    {
+        path: '/Add_QRCode',
+        name: 'Add_QRCode',
+        component: AddQRCode,
     }
     
 ];
