@@ -1,69 +1,73 @@
 <template>
-
-<div id="app">
-    <div class="text-center">
-        <h1 id="header">Codes</h1>
-    </div>
-  <v-app id="inspire">
-    <v-card
-      class="elevation-16 mx-auto"
-      width="60%"
-    >
-      <v-card-title
-        class="headline"
-        primary-title
-      >
-        Schwarzwald-Panorama-See
-      </v-card-title>
-      <v-card-text>
-        Wunderschöner See im Schwarzwald, Genuss pur!
-  
-        <div class="text-center mt-12">
-          <v-img
-        class="white--text align-end"
-        height="200px"
-        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-      >
-          </v-img>
-          <v-rating
-            v-model="rating"
-            color="yellow darken-3"
-            background-color="grey darken-1"
-            empty-icon="$ratingFull"
-            half-increments
-            hover
-          ></v-rating>
+    <div id="app">
+        <div class="text-center">
+            <h1 id="header">Codes</h1>
         </div>
-      </v-card-text>
-      <v-divider></v-divider>
-      <v-card-actions class="justify-space-between">
-        <v-btn text>No Thanks</v-btn>
-        <v-btn
-          color="primary"
-          text
-        >
-          Rate Now
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-app>
-</div>
 
+        <v-layout row wrap justify-center ma-2>
+            <v-flex
+                xs12
+                md6
+                lg4
+                xl3
+                ma-2
+                v-for="qrCode in qrCodeLocations"
+                :key="qrCode.id"
+            >
+                <v-card class="elevation-16 mx-auto">
+                    <v-img
+                        class="white--text align-end"
+                        height="160px"
+                        gradient="to top, rgba(0, 0, 0, .63), rgba(0, 0, 0, 0)"
+                        :src="qrCode.image"
+                    >
+                        <v-card-title class="headline" primary-title>
+                            {{ qrCode.name }}
+                        </v-card-title>
+                        <template v-slot:placeholder>
+                            <v-row
+                                class="fill-height ma-0"
+                                align="center"
+                                justify="center"
+                            >
+                                <v-progress-circular
+                                    indeterminate
+                                    color="grey lighten-5"
+                                ></v-progress-circular>
+                            </v-row>
+                        </template>
+                    </v-img>
 
+                    <v-card-text>
+                        <p>
+                            Upload-Datum:
+                            {{
+                                new Date(
+                                    qrCode.creationTimestamp.seconds * 1000
+                                ).toLocaleDateString()
+                            }}
+                        </p>
+                        <p>{{ qrCode.location }}</p>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+    </div>
 </template>
 
 <script>
+//Firestore
+import { DB } from '../firebase/db';
 
+export default {
+    name: 'codes',
+    data() {
+        return {
+            qrCodeLocations: []
+        };
+    },
+    firestore: {
+        qrCodeLocations: DB.collection('qr-codes')
+    }
+};
 </script>
-
-<style scoped>
-#header {
-   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-        'Lucida Sans', Arial, sans-serif;
-}
-#inspire {
-   
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-</style>

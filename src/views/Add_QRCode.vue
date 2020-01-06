@@ -1,5 +1,4 @@
 <template>
-
     <v-stepper v-model="e13" vertical>
         <v-stepper-step step="1" complete>
             Gebe deinem QR-Code einen Namen
@@ -39,12 +38,13 @@
             <v-btn color="primary" @click="e13 = 4">Upload</v-btn>
             <v-btn text>Beenden</v-btn>
         </v-stepper-content>
-
     </v-stepper>
 </template>
 
 
 <script>
+export default {
+    name: 'Add-QRCode',
 
     export default {
         name: 'Add-QRCode',
@@ -55,14 +55,12 @@
             }
         },
     }
-
+};
 </script>
 
 <style scoped>
-
-    #qrWindow {
-        height: 100%;
-        margin: 0;
-    }
-
+#qrWindow {
+    height: 100%;
+    margin: 0;
+}
 </style>
