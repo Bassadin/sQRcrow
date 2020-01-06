@@ -7,6 +7,7 @@ import Impressum from '../views/Impressum.vue';
 import Help from '../views/Help.vue';
 import TroubleShooting from '../views/TroubleShooting';
 import Codes from '../views/Codes';
+import AddQRCode from '../views/Add_QRCode';
 import Login from '../views/Login';
 
 Vue.use(VueRouter);
@@ -46,6 +47,11 @@ const routes = [
         path: '/codes',
         name: 'Codes',
         component: Codes
+    },
+    {
+        path: '/Add_QRCode',
+        name: 'Add_QRCode',
+        component: AddQRCode
     },
     {
         path: '/login',

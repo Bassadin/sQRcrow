@@ -92,6 +92,7 @@ export default {
             { icon: 'mdi-home', text: 'Home', to: '/' },
             { icon: 'mdi-qrcode-scan', text: 'QR-Scanner', to: '/QR_Reader' },
             { icon: 'mdi-map-search', text: 'Map', to: '/maps' },
+            { icon: 'mdi-qrcode', text: 'Add QR-Code', to: '/Add_QRCode'},
             { icon: 'mdi-qrcode', text: 'Codes', to: '/codes' }
         ],
         lowerPages: [
