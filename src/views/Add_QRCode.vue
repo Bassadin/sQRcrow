@@ -5,11 +5,7 @@
         </v-stepper-step>
 
         <v-stepper-content step="1">
-
-            <v-text-field
-                placeholder="Name eingeben"
-                outlined
-            ></v-text-field>
+            <v-text-field placeholder="Name eingeben" outlined></v-text-field>
 
             <v-btn color="primary" @click="e13 = 2">Weiter</v-btn>
             <v-btn text>Beenden</v-btn>
@@ -20,10 +16,7 @@
         </v-stepper-step>
 
         <v-stepper-content step="2">
-
-           <v-content>
-               <input type="file"><br>
-           </v-content><br>
+            <v-content> <input type="file" /><br /> </v-content><br />
 
             <v-btn color="primary" @click="e13 = 3">Weiter</v-btn>
             <v-btn text>Beenden</v-btn>
@@ -34,26 +27,20 @@
         </v-stepper-step>
 
         <v-stepper-content step="3">
-
             <v-btn color="primary" @click="e13 = 4">Upload</v-btn>
             <v-btn text>Beenden</v-btn>
         </v-stepper-content>
     </v-stepper>
 </template>
 
-
 <script>
 export default {
     name: 'Add-QRCode',
 
-    export default {
-        name: 'Add-QRCode',
-
-        data () {
-            return {
-                e13: 1,
-            }
-        },
+    data() {
+        return {
+            e13: 1
+        };
     }
 };
 </script>
