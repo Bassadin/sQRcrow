@@ -47,6 +47,17 @@
             <v-toolbar-title class="mr-12 align-center">
                 <span class="title" style="color:#FDF8E5">sQRcrow</span>
             </v-toolbar-title>
+            <v-spacer></v-spacer>
+
+            <template v-if="!this.userIsAuthenticated">
+                <v-btn color="primary" to="/login"
+                    ><v-icon left>mdi-login-variant</v-icon> Log in</v-btn
+                >
+            </template>
+            <template v-else>
+                <!-- TODO Signout -->
+                <v-btn color="warning" @click="logout">Log out</v-btn>
+            </template>
         </v-app-bar>
 
         <v-content>
@@ -81,13 +92,8 @@ export default {
             { icon: 'mdi-home', text: 'Home', to: '/' },
             { icon: 'mdi-qrcode-scan', text: 'QR-Scanner', to: '/QR_Reader' },
             { icon: 'mdi-map-search', text: 'Map', to: '/maps' },
-            {
-                icon: 'mdi-access-point-network',
-                text: 'Server Status',
-                to: '/no_connection'
-            },
-             { icon: 'mdi-qrcode', text: 'Codes', to: '/codes' },
-            //Change if server status is done, default is /no_connection
+            { icon: 'mdi-qrcode', text: 'Add QR-Code', to: '/Add_QRCode' },
+            { icon: 'mdi-qrcode', text: 'Codes', to: '/codes' }
         ],
         lowerPages: [
             {
@@ -95,11 +101,32 @@ export default {
                 text: 'Impressum',
                 to: '/impressum'
             },
-            { icon: 'mdi-help-circle-outline', 
-            text: 'Help', 
-            to: '/help' }
+            { icon: 'mdi-help-circle-outline', text: 'Help', to: '/help' }
         ]
-    })
+    }),
+    computed: {
+        userIsAuthenticated() {
+            return (
+                this.$store.getters.user != null &&
+                this.$store.getters.user != undefined
+            );
+        },
+        user() {
+            return this.$store.getters.user;
+        }
+    },
+    watch: {
+        user(value) {
+            if (value == null && value == undefined) {
+                this.$router.push('/');
+            }
+        }
+    },
+    methods: {
+        logout() {
+            this.$store.dispatch('logoutUser');
+        }
+    }
 };
 </script>
 
@@ -113,6 +140,7 @@ export default {
 
 #nav-drawer,
 #qr-fab {
-    z-index: 90000; /* Make navbar hover above the map (and everything else) on mobile */
+    /* Make navbar hover above the map (and everything else) on mobile */
+    z-index: 90000;
 }
 </style>

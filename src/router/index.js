@@ -5,8 +5,10 @@ import QR_Reader from '../views/QR_Reader.vue';
 import Maps from '../views/Maps.vue';
 import Impressum from '../views/Impressum.vue';
 import Help from '../views/Help.vue';
-import NoConnection from '../views/NoConnection';
-import Codes from '../views/Codes'
+import TroubleShooting from '../views/TroubleShooting';
+import Codes from '../views/Codes';
+import AddQRCode from '../views/Add_QRCode';
+import Login from '../views/Login';
 
 Vue.use(VueRouter);
 
@@ -37,16 +39,25 @@ const routes = [
         component: Help
     },
     {
-        path: '/no_connection',
-        name: 'NoConnection',
-        component: NoConnection
+        path: '/QR_TroubleShooting',
+        name: 'TroubleShooting',
+        component: TroubleShooting
     },
     {
         path: '/codes',
         name: 'Codes',
         component: Codes
+    },
+    {
+        path: '/Add_QRCode',
+        name: 'Add_QRCode',
+        component: AddQRCode
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
     }
-    
 ];
 
 const router = new VueRouter({

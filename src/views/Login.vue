@@ -1,129 +1,45 @@
 <template>
-    <div class="Login">
-        <v-content>
-            <v-container class="fill-height" fluid>
-                <v-row align="center" justify="center">
-                    <v-col cols="12" sm="8" md="4">
-                        <v-flex mb-4>
-                            <div class="h1 headline text-center">
-                                <h1>Log in</h1>
-                            </div>
-                        </v-flex>
-
-                        <v-card class="elevation-12">
-                            <v-toolbar color="#546e7a" light>
-                                <div class="welcome">
-                                    <v-toolbar-title
-                                        >Willkommen bei sQRcrow</v-toolbar-title
-                                    >
-                                </div>
-                                <v-spacer />
-                            </v-toolbar>
-                            <v-card-text>
-                                <v-form ref="form" v-model="valid">
-                                    <!-- <v-text-field label="name"  -->
-
-                                    <v-text-field
-                                        label="Benutzername"
-                                        name="login"
-                                        :rules="nameRules"
-                                        prepend-icon="mdi-account-circle"
-                                        type="text"
-                                    />
-                                    <!--Hide or show password-->
-                                    <v-text-field
-                                        id="password"
-                                        label="Passwort"
-                                        name="password"
-                                        :value="myPass"
-                                        :rules="passwordRules"
-                                        prepend-icon="mdi-lock"
-                                        :append-icon="
-                                            value ? 'mdi-eye-off' : 'mdi-eye'
-                                        "
-                                        @click:append="() => (value = !value)"
-                                        :type="value ? 'password' : 'text'"
-                                        :counter="10"
-                                    />
-                                </v-form>
-                            </v-card-text>
-
-                            <v-card-actions>
-                                <v-spacer />
-
-                                <div class="btn">
-                                    <v-btn
-                                        color="#546e7a"
-                                        icon=""
-                                        @click="register"
-                                        >Login</v-btn
-                                    >
-                                </div>
-                            </v-card-actions>
-                        </v-card>
-
-                        <div class="next text-center">
-                            <p>
-                                Noch keinen Account? Melde dich
-                                <a href="/Join">hier</a> kostenlos an
-                            </p>
-                        </div>
-                    </v-col>
-
-                    <div class="footer">
-                        <v-footer padless>
-                            <v-col class="text-center" cols="12">
-                                {{ new Date().getFullYear() }} —
-                                <strong>©sQRcrow</strong>
-                            </v-col>
-                        </v-footer>
-                    </div>
-                </v-row>
-            </v-container>
-        </v-content>
+    <div class="FirebaseUI_Login">
+        <v-container bg fill-height grid-list-md text-xs-center>
+            <v-layout row wrap align-center>
+                <v-flex>
+                    <h1>Login</h1>
+                    <div id="firebaseui-auth-container"></div>
+                </v-flex>
+            </v-layout>
+        </v-container>
     </div>
 </template>
 
 <script>
+import firebase from 'firebase';
+import * as firebaseui from 'firebaseui';
+import 'firebaseui/dist/firebaseui.css';
+
 export default {
-    name: 'Login',
-    props: {
-        source: String
-    },
+    name: 'auth',
+    mounted() {
+        const loginContext = this;
+        var uiConfig = {
+            signInOptions: [
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ],
+            callbacks: {
+                signInSuccessWithAuthResult: function(authResult) {
+                    loginContext.$store.dispatch('changeUser', {
+                        id: authResult.user.uid
+                    });
+                    loginContext.$router.push('/');
 
-    //oder data() => ({ statt return
-    data() {
-        return {
-            value: String,
-            valid: true,
-            nameRules: [v => !!v || 'Name is requiered'],
-
-            passwordRules: [v => !!v || 'Password is requiered']
+                    return true;
+                }
+            }
         };
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        ui.start('#firebaseui-auth-container', uiConfig);
     }
 };
 </script>
 
-<style scoped>
-.h1 {
-    padding-bottom: 50px;
-}
-
-.next {
-    padding-top: 20px;
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-.welcome {
-    padding-left: 70px;
-}
-
-.btn {
-    width: 53%;
-}
-</style>
+<style lang="css"></style>
