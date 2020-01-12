@@ -17,7 +17,10 @@
 
             <v-layout row wrap justify-center ma-2>
                 <v-flex xs12 md6 lg4 xl3 ma-2>
-                    <v-card href="https://github.com/hfu-gis/gamma/commits/master" target="_blank">
+                    <v-card
+                        href="https://github.com/hfu-gis/gamma/commits/master"
+                        target="_blank"
+                    >
                         <v-img
                             :src="require('@/assets/images/news/whatsnew.jpg')"
                             height="200px"
@@ -45,7 +48,10 @@
                     </v-card>
                 </v-flex>
                 <v-flex xs12 md6 lg4 xl3 ma-2>
-                    <v-card href="https://github.com/hfu-gis/gamma/issues" target="_blank">
+                    <v-card
+                        href="https://github.com/hfu-gis/gamma/issues"
+                        target="_blank"
+                    >
                         <v-img
                             :src="require('@/assets/images/news/bugs.jpg')"
                             height="200px"
