@@ -5,7 +5,7 @@
         </v-stepper-step>
 
         <v-stepper-content step="1">
-            <v-text-field placeholder="Name eingeben" outlined></v-text-field>
+            <v-text-field label="Name" outlined v-model="name"></v-text-field>
 
             <v-btn color="primary" @click="currentStepperStep = 2"
                 >Weiter</v-btn
@@ -35,7 +35,22 @@
         </v-stepper-step>
 
         <v-stepper-content step="3">
-            <v-btn color="primary" @click="currentStepperStep = 4"
+            <v-text-field
+                label="Breitengrad"
+                outlined
+                v-model="latitude"
+            ></v-text-field
+            ><v-text-field
+                label="Längengrad"
+                outlined
+                v-model="longitude"
+            ></v-text-field>
+            <v-btn
+                color="primary"
+                @click="
+                    currentStepperStep = 4;
+                    uploadNewQRCode();
+                "
                 >Fertig</v-btn
             >
             <v-btn text @click="currentStepperStep = 2">Zurück</v-btn>
@@ -46,6 +61,8 @@
 <script>
 import VImageInput from 'vuetify-image-input';
 
+import * as firebase from 'firebase';
+
 export default {
     name: 'Add-QRCode',
     components: {
@@ -55,6 +72,58 @@ export default {
         return {
             currentStepperStep: 1
         };
+    },
+    methods: {
+        uploadNewQRCode() {
+            let imageUrl;
+            let id;
+
+            const newQrCodeData = {
+                name: this.name,
+                creationTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                location: {
+                    latitude: this.latitude, //Debug data for now
+                    longitude: this.longitude
+                },
+                image: 'abc'
+            };
+
+            firebase
+                .firestore()
+                .collection('qr-codes')
+                .add(newQrCodeData)
+                .then(data => {
+                    id = data.id;
+                    return id;
+                })
+                .then(id => {
+                    var firebaseStorageRef = firebase
+                        .storage()
+                        .ref()
+                        .child('qr-code-images/' + id);
+                    return firebaseStorageRef.putString(
+                        this.imageData,
+                        'data_url'
+                    );
+                })
+                .then(fileData => {
+                    return firebase
+                        .storage()
+                        .ref(fileData.metadata.fullPath)
+                        .getDownloadURL();
+                })
+                .then(URL => {
+                    imageUrl = URL;
+                    return firebase
+                        .firestore()
+                        .collection('qr-codes')
+                        .doc(id)
+                        .update({ image: imageUrl });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     }
 };
 </script>
