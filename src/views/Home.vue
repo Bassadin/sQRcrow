@@ -15,25 +15,30 @@
                 ></v-img>
             </v-layout>
             <v-layout justify-center>
-                <v-flex xs12 md6 lg4 xl3 ma-2>
+                <v-flex>
                     <v-carousel
                         cycle
                         height = "400"
-                        width = "600"
-                        hide-delimiter-background show-arrows
+                        hide-delimiter-background show-arrows-on-hover
                         >
-
                         <v-carousel-item
-                            v-for="(slide,i) in slides"
+                            v-for="(slide, i) in slides"
                             :key="i"
                         >
-                        </v-carousel-item>
-                        <v-row
-                            class="fill-height"
-                            align="center"
-                            justify="center"
+                            <v-sheet
+                                :color="colors[i]"
+                                height="100%"
                             >
-                        </v-row>
+                                <v-row
+                                        class="fill-height"
+                                        align="center"
+                                        justify="center"
+
+                                >
+                                    <div class="display-3">{{ slide }}</div>
+                                </v-row>
+                            </v-sheet>
+                        </v-carousel-item>
                     </v-carousel>
                 </v-flex>
             </v-layout>
@@ -119,18 +124,15 @@ export default {
                'purple'
            ],
             slides: [
-                'One',
-                'two',
-                'three',
-                'four',
-                'five',
-                'six',
-                'seven'
+                'We have maps function!',
+                'Dummy Codes now online!',
+                'Do not forget to sign in!',
+                'Made in Germany!',
+                'Make your own codes and upload them!',
+                'More function incoming!',
+                'Thank you for visiting us!'
             ]
         };
-    },
-    mounted() {
-        this.newsContent = require('../database/news');
     }
 };
 </script>
