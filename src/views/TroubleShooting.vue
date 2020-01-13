@@ -1,3 +1,6 @@
+<!--
+ @Author Tawan Nansin
+ -->
 <template>
     <div class="TextContent">
         <v-layout text-center wrap>
