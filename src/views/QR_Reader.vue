@@ -13,17 +13,15 @@ import QRCodeReader from '@/components/QRCodeReader.vue';
 
 export default {
     name: 'QR_Reader',
-    data(){
-        return{dialog: false}
+    data() {
+        return { dialog: false };
     },
     components: {
         QRCodeReader
     },
-    method:{
+    method: {
         logErrors(promise) {
-            promise.catch(function() {
-
-            });
+            promise.catch(function() {});
         }
     }
 };
@@ -42,7 +40,7 @@ export default {
     width: 100%;
 }
 
-h3{
+h3 {
     text-align: center;
     margin-top: 25px;
     margin-left: auto;

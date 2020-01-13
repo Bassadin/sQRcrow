@@ -7,7 +7,7 @@
             :options="mapOptions"
             style="width:100%;height:100%"
         >
-            <v-locatecontrol />
+            <v-locatecontrol :options="{ showCompass: true, flyTo: true }" />
             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
 
             <l-marker
@@ -19,8 +19,42 @@
                 v-bind:key="marker.id"
                 :icon="qrCodeLocationIcon"
             >
-                <l-popup>
-                    <div>{{ marker.name }}</div>
+                <l-popup :style="'width: ' + popupWidth">
+                    <v-card style="width:100%; height:100%;">
+                        <v-img
+                            class="white--text align-end"
+                            height="140px"
+                            gradient="to top, rgba(0, 0, 0, .63), rgba(0, 0, 0, 0)"
+                            :src="marker.image"
+                        >
+                            <v-card-title class="headline" primary-title>
+                                {{ marker.name }}
+                            </v-card-title>
+                            <template v-slot:placeholder>
+                                <v-row
+                                    class="fill-height ma-0"
+                                    align="center"
+                                    justify="center"
+                                >
+                                    <v-progress-circular
+                                        indeterminate
+                                        color="grey lighten-5"
+                                    ></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
+                        <v-card-text>
+                            <strong>Upload-Datum:</strong><br />
+                            {{
+                                new Date(
+                                    marker.creationTimestamp.seconds * 1000
+                                ).toLocaleDateString()
+                            }}
+                            <br />
+                            <strong>Geokoordinaten:</strong><br />
+                            {{ marker.location }}
+                        </v-card-text>
+                    </v-card>
                 </l-popup>
             </l-marker>
         </l-map>
@@ -33,7 +67,7 @@ import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol/Vue2LeafletLocatecontrol';
 
 //Firestore
-import { db } from '../db';
+import { DB } from '../firebase/db';
 
 export default {
     name: 'maps',
@@ -71,7 +105,24 @@ export default {
         };
     },
     firestore: {
-        qrCodeLocations: db.collection('qr-codes')
+        qrCodeLocations: DB.collection('qr-codes')
+    },
+    computed: {
+        popupWidth() {
+            switch (this.$vuetify.breakpoint.name) {
+                case 'xs':
+                    return '230px';
+                case 'sm':
+                    return '250px';
+                case 'md':
+                    return '300px';
+                case 'lg':
+                    return '320px';
+                case 'xl':
+                    return '350px';
+            }
+            return '0';
+        }
     }
 };
 </script>
@@ -82,5 +133,9 @@ export default {
 .maps {
     width: 100%;
     height: 100%;
+}
+
+.qrCode-popup {
+    width: 250px;
 }
 </style>
