@@ -23,9 +23,10 @@
                     <v-card style="width:95%; height:100%;">
                         <v-img
                             class="white--text align-end"
-                            height="130px"
+                            height="165px"
                             gradient="to top, rgba(0, 0, 0, .63), rgba(0, 0, 0, 0)"
                             :src="marker.image"
+                            style="position: relative;"
                         >
                             <v-card-title class="headline" primary-title>
                                 {{ marker.name }}
@@ -42,6 +43,11 @@
                                     ></v-progress-circular>
                                 </v-row>
                             </template>
+                            <qrcode
+                                style="border-radius:10%;position:absolute;top: 5px; right: 5px;"
+                                :value="marker.id"
+                                :options="{ width: 75 }"
+                            ></qrcode>
                         </v-img>
                         <v-card-text>
                             <strong>Upload-Datum:</strong><br />
