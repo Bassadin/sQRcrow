@@ -20,10 +20,10 @@
                 :icon="qrCodeLocationIcon"
             >
                 <l-popup :style="'width: ' + popupWidth">
-                    <v-card style="width:100%; height:100%;">
+                    <v-card style="width:95%; height:100%;">
                         <v-img
                             class="white--text align-end"
-                            height="140px"
+                            height="130px"
                             gradient="to top, rgba(0, 0, 0, .63), rgba(0, 0, 0, 0)"
                             :src="marker.image"
                         >
