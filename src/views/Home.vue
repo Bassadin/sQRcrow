@@ -55,8 +55,8 @@
                     </v-container>
                 </v-layout>
             </div>
-        </v-col>
 
+        </v-col>
         <div class="footer">
             <v-footer padless>
                 <v-col class="text-center" cols="12">
@@ -65,9 +65,7 @@
                 </v-col>
             </v-footer>
         </div>
-
     </v-row>
-
 
 </template>
 
