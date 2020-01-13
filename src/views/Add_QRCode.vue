@@ -36,6 +36,7 @@
 
         <v-stepper-content step="3">
             <v-text-field
+                class="mt-1"
                 label="Breitengrad"
                 outlined
                 v-model="latitude"
