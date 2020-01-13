@@ -18,22 +18,16 @@
                 <v-flex>
                     <v-carousel
                         cycle
-                        height = "400"
-                        hide-delimiter-background show-arrows-on-hover
-                        >
-                        <v-carousel-item
-                            v-for="(slide, i) in slides"
-                            :key="i"
-                        >
-                            <v-sheet
-                                :color="colors[i]"
-                                height="100%"
-                            >
+                        height="400"
+                        hide-delimiter-background
+                        show-arrows-on-hover
+                    >
+                        <v-carousel-item v-for="(slide, i) in slides" :key="i">
+                            <v-sheet :color="colors[i]" height="100%">
                                 <v-row
-                                        class="fill-height"
-                                        align="center"
-                                        justify="center"
-
+                                    class="fill-height"
+                                    align="center"
+                                    justify="center"
                                 >
                                     <div class="display-3">{{ slide }}</div>
                                 </v-row>
@@ -114,23 +108,36 @@
 export default {
     data() {
         return {
-           colors:[
-               'red',
-               'yellow',
-               'magenta',
-               'green',
-               'orange',
-               'blue',
-               'purple'
-           ],
+            colors: [
+                'red',
+                'yellow',
+                'magenta',
+                'green',
+                'orange',
+                'blue',
+                'purple',
+                'gray',
+                'cyan',
+                'dark green',
+                'black',
+                'silver',
+                'pink'
+            ],
             slides: [
-                'We have maps function!',
-                'Dummy Codes now online!',
-                'Do not forget to sign in!',
+                'Karten Funktion ist da!',
+                'Dummy QRCodes sind jetzt online!',
+                'Vergiss nicht, anzumelden!',
                 'Made in Germany!',
-                'Make your own codes and upload them!',
-                'More function incoming!',
-                'Thank you for visiting us!'
+                'Erstellt eure eigene QRCodes und ' + 'ladet sie hoch!',
+                'Noch mehr Funktionen unterwegs!',
+                'Geht raus und findet die QRCodes!',
+                'Die App ist gut für Entdecker!',
+                'Geben Sie uns bitte volle Punktzahl' + ' für dieses Projekt!',
+                'Wir sitzen hier so lang, ' +
+                    'unsere Rücken fangen an zu schmerzen',
+                'Quasi Geocaching lmao',
+                'Danke für eure Besuch!',
+                "Und jetzt auf geht's!"
             ]
         };
     }
