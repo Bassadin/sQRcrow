@@ -16,18 +16,13 @@
             </v-layout>
 
             <v-layout row wrap justify-center ma-2>
-                <v-flex
-                    xs12
-                    md6
-                    lg4
-                    xl3
-                    ma-2
-                    v-for="item in newsContent.news"
-                    :key="item.key"
-                >
-                    <v-card>
+                <v-flex xs12 md6 lg4 xl3 ma-2>
+                    <v-card
+                        href="https://github.com/hfu-gis/gamma/commits/master"
+                        target="_blank"
+                    >
                         <v-img
-                            :src="require('@/assets/images/news/' + item.img)"
+                            :src="require('@/assets/images/news/whatsnew.jpg')"
                             height="200px"
                         >
                             <template v-slot:placeholder>
@@ -44,10 +39,42 @@
                             </template>
                         </v-img>
                         <v-card-title>
-                            {{ item.title }}
+                            What's new?
                         </v-card-title>
                         <v-card-subtitle>
-                            {{ item.content }}
+                            Camera and google maps working, first dummy data is
+                            there as well!
+                        </v-card-subtitle>
+                    </v-card>
+                </v-flex>
+                <v-flex xs12 md6 lg4 xl3 ma-2>
+                    <v-card
+                        href="https://github.com/hfu-gis/gamma/issues"
+                        target="_blank"
+                    >
+                        <v-img
+                            :src="require('@/assets/images/news/bugs.jpg')"
+                            height="200px"
+                        >
+                            <template v-slot:placeholder>
+                                <v-row
+                                    class="fill-height ma-0"
+                                    align="center"
+                                    justify="center"
+                                >
+                                    <v-progress-circular
+                                        indeterminate
+                                        color="grey lighten-5"
+                                    ></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
+                        <v-card-title>
+                            Known Issues
+                        </v-card-title>
+                        <v-card-subtitle>
+                            Learn about known issues and bug reports as well as
+                            feature requests.
                         </v-card-subtitle>
                     </v-card>
                 </v-flex>
