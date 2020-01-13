@@ -17,9 +17,10 @@
                 <v-card class="elevation-8 mx-auto">
                     <v-img
                         class="white--text align-end"
-                        height="160px"
+                        height="220px"
                         gradient="to top, rgba(0, 0, 0, .63), rgba(0, 0, 0, 0)"
                         :src="qrCode.image"
+                        style="position:relative;"
                     >
                         <v-card-title class="headline" primary-title>
                             {{ qrCode.name }}
@@ -36,6 +37,11 @@
                                 ></v-progress-circular>
                             </v-row>
                         </template>
+                        <qrcode
+                            style="border-radius:10%;position:absolute;top: 5px; right: 5px;"
+                            :value="qrCode.id"
+                            :options="{ width: 130 }"
+                        ></qrcode>
                     </v-img>
 
                     <v-card-text>
