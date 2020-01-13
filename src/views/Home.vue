@@ -14,7 +14,29 @@
                     height="200"
                 ></v-img>
             </v-layout>
+            <v-layout justify-center>
+                <v-flex xs12 md6 lg4 xl3 ma-2>
+                    <v-carousel
+                        cycle
+                        height = "400"
+                        width = "600"
+                        hide-delimiter-background show-arrows
+                        >
 
+                        <v-carousel-item
+                            v-for="(slide,i) in slides"
+                            :key="i"
+                        >
+                        </v-carousel-item>
+                        <v-row
+                            class="fill-height"
+                            align="center"
+                            justify="center"
+                            >
+                        </v-row>
+                    </v-carousel>
+                </v-flex>
+            </v-layout>
             <v-layout row wrap justify-center ma-2>
                 <v-flex xs12 md6 lg4 xl3 ma-2>
                     <v-card
@@ -87,7 +109,24 @@
 export default {
     data() {
         return {
-            newsContent: {}
+           colors:[
+               'red',
+               'yellow',
+               'magenta',
+               'green',
+               'orange',
+               'blue',
+               'purple'
+           ],
+            slides: [
+                'One',
+                'two',
+                'three',
+                'four',
+                'five',
+                'six',
+                'seven'
+            ]
         };
     },
     mounted() {
