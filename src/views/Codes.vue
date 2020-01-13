@@ -37,11 +37,7 @@
                                 ></v-progress-circular>
                             </v-row>
                         </template>
-                        <qrcode
-                            style="border-radius:10%;position:absolute;top: 5px; right: 5px;"
-                            :value="qrCode.id"
-                            :options="{ width: 130 }"
-                        ></qrcode>
+                        <QRCodeDisplay :value="qrCode.id"></QRCodeDisplay>
                     </v-img>
 
                     <v-card-text>
@@ -64,6 +60,7 @@
 <script>
 //Firestore
 import { DB } from '../firebase/db';
+import QRCodeDisplay from '@/components/QRCodeDisplay';
 
 export default {
     name: 'codes',
@@ -71,6 +68,9 @@ export default {
         return {
             qrCodeLocations: []
         };
+    },
+    components: {
+        QRCodeDisplay
     },
     firestore: {
         qrCodeLocations: DB.collection('qr-codes')
