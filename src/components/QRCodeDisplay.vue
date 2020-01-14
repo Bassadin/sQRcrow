@@ -12,7 +12,7 @@
                 }
             }"
         ></qrcode
-        >F
+        >
     </div>
 </template>
 
