@@ -11,8 +11,7 @@
                     dark: '00023BFF'
                 }
             }"
-        ></qrcode
-        >
+        ></qrcode>
     </div>
 </template>
 
