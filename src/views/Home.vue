@@ -13,6 +13,7 @@
                     contain
                     height="200"
                 ></v-img>
+                <v-divider></v-divider>
             </v-layout>
             <v-layout justify-center>
                 <v-flex>
