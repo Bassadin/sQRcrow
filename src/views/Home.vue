@@ -13,52 +13,6 @@
                     contain
                     height="200"
                 ></v-img>
-
-
-            <!--Tawan-->
-            <div class="home">
-                <v-layout text-center wrap>
-
-                    <v-container fluid>
-                        <v-row>
-                            <v-col
-                                max-height="auto"
-                                max-width="auto"
-                                v-for="item in newsContent.news"
-                                :key="item.key"
-                                :cols="item.flex"
-                            >
-                                <v-card>
-                                    <v-img
-                                        :src="
-                                            require('@/assets/images/news/' +
-                                                item.img)
-                                        "
-                                        height="200px"
-                                    >
-                                        <h2>{{ item.title }}</h2>
-                                    </v-img>
-                                    <v-card-text>
-                                        <p>
-                                            {{ item.content }}
-                                        </p>
-                                    </v-card-text>
-                                </v-card>
-                            </v-col>
-                        </v-row>
-                    </v-container>
-                </v-layout>
-            </div>
-
-        <div class="footer">
-            <v-footer padless>
-                <v-col class="text-center" cols="12">
-                    {{ new Date().getFullYear() }} —
-                    <strong>sQRcrow</strong>
-                </v-col>
-            </v-footer>
-        </div>
-
             </v-layout>
             <v-layout justify-center>
                 <v-flex>
