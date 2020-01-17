@@ -20,12 +20,13 @@
                 :icon="qrCodeLocationIcon"
             >
                 <l-popup :style="'width: ' + popupWidth">
-                    <v-card style="width:100%; height:100%;">
+                    <v-card style="width:95%; height:100%;">
                         <v-img
                             class="white--text align-end"
-                            height="140px"
+                            height="165px"
                             gradient="to top, rgba(0, 0, 0, .63), rgba(0, 0, 0, 0)"
                             :src="marker.image"
+                            style="position: relative;"
                         >
                             <v-card-title class="headline" primary-title>
                                 {{ marker.name }}
@@ -42,6 +43,7 @@
                                     ></v-progress-circular>
                                 </v-row>
                             </template>
+                            <QRCodeDisplay :value="marker.id"></QRCodeDisplay>
                         </v-img>
                         <v-card-text>
                             <strong>Upload-Datum:</strong><br />
@@ -65,6 +67,7 @@
 import * as Leaflet from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol/Vue2LeafletLocatecontrol';
+import QRCodeDisplay from '@/components/QRCodeDisplay';
 
 //Firestore
 import { DB } from '../firebase/db';
@@ -76,7 +79,8 @@ export default {
         LMarker,
         LPopup,
         LTileLayer,
-        'v-locatecontrol': Vue2LeafletLocatecontrol
+        'v-locatecontrol': Vue2LeafletLocatecontrol,
+        QRCodeDisplay
     },
     data() {
         return {

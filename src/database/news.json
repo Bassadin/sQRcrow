@@ -2,12 +2,12 @@
   "news": [
     {
       "title": "What's new?",
-      "content": "Hello World, our camera and google maps work now :D",
+      "content": "Camera and google maps working, first dummy data is there as well!",
       "img": "sunset_Andre_iv.jpg"
     },
     {
-      "title": "Known Issue",
-      "content": "Help me I don't know how to code",
+      "title": "Known Issues",
+      "content": "Learn about known issues and bug reports as well as feature requests.",
       "img": "dima_kosh.jpg"
     },
     {

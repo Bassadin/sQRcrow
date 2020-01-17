@@ -72,9 +72,8 @@
  </template>
 
 <script>
-    import VImageInput from 'vuetify-image-input';
-    import * as firebase from 'firebase';
-
+import VImageInput from 'vuetify-image-input';
+import * as firebase from 'firebase';
 
 export default {
     name: 'Add-QRCode',
@@ -102,7 +101,6 @@ export default {
     },
 
     methods: {
-
         uploadNewQRCode() {
             let imageUrl;
             let id;
