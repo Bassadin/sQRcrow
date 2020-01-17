@@ -4,17 +4,25 @@
                 Gebe deinem QR-Code einen Namen
             </v-stepper-step>
 
-            <v-stepper-content step="1">
-                <v-text-field label="Name" outlined v-model="name"></v-text-field>
-
+            <!--Step 1-->
+            <v-stepper-content step="1" ref="form">
+                <v-text-field label="Name"
+                              name="name"
+                              id="name"
+                              outlined
+                              :rules="nameRules"
+                             >
+                </v-text-field>
                 <v-btn color="primary" @click="currentStepperStep = 2"
                 >Weiter</v-btn
                 >
             </v-stepper-content>
+
+            <!--Step 2-->
             <v-stepper-step step="2" complete>
                 Lade einen neuen QR-Code hoch
             </v-stepper-step>
-            <v-stepper-content step="2">
+            <v-stepper-content step="2" ref="form">
                 <v-image-input
                         v-model="imageData"
                         :image-quality="0.85"
@@ -23,24 +31,34 @@
                 />
                 <br />
                 <v-btn color="primary" @click="currentStepperStep = 3"
-                >Weiter</v-btn
-                >
+                >Weiter</v-btn>
                 <v-btn text @click="currentStepperStep = 1">Zurück</v-btn>
             </v-stepper-content>
+
+            <!--Step 3-->
             <v-stepper-step step="3" complete>
                 Location
             </v-stepper-step>
 
-            <v-stepper-content step="3">
+            <v-stepper-content step="3" ref="form">
                 <v-text-field
+                        name="location"
+                        id="location"
                         label="Breitengrad"
                         outlined
-                        v-model="latitude"
+                        :rules="locationRules"
+                        value="" required
+                        v-model.number="latitude"
+                        type="number"
                 ></v-text-field
                 ><v-text-field
-                    label="Längengrad"
-                    outlined
-                    v-model="longitude"
+                        name="location"
+                        id="location"
+                        label="Längengrad"
+                        outlined
+                        :rules="locationRules"
+                        v-model.number="latitude"
+                        type="number"
             ></v-text-field>
                 <v-btn
                         color="primary"
@@ -56,6 +74,7 @@
     import VImageInput from 'vuetify-image-input';
     import * as firebase from 'firebase';
 
+
 export default {
     name: 'Add-QRCode',
     components: {
@@ -63,10 +82,31 @@ export default {
     },
     data() {
         return {
+            success: false,
+            valid: true,
             currentStepperStep: 1,
+            name: '',
+            location: '',
+
+            nameRules: [
+               v => !!v || 'Ein Name wird benötigt',
+                //v => (v && v.length <= 10 || 'Name must be less than...')
+            ],
+
+            locationRules: [
+                v => !!v || 'Location wird benötigt',
+            ],
         };
     },
+
     methods: {
+       // currentStepperStep() {
+       //     if (this.$refs.form.validate()) {
+       //       console.debug('Validation success')
+       //       this.register()
+       //   }
+       // },
+
         uploadNewQRCode() {
             let imageUrl;
             let id;
