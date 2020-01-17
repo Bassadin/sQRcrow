@@ -1,19 +1,21 @@
  <template>
-        <v-stepper v-model="currentStepperStep" vertical>
+        <v-stepper v-model="currentStepperStep" vertical ref="form">
             <v-stepper-step step="1" complete>
                 Gebe deinem QR-Code einen Namen
             </v-stepper-step>
 
             <!--Step 1-->
-            <v-stepper-content step="1" ref="form">
+            <v-stepper-content step="1">
                 <v-text-field label="Name"
                               name="name"
                               id="name"
                               outlined
+                              v-model="isValid"
                               :rules="nameRules"
+                              required
                              >
                 </v-text-field>
-                <v-btn color="primary" @click="currentStepperStep = 2"
+                <v-btn color="primary" @click="currentStepperStep = 2" :disabled="!isValid"
                 >Weiter</v-btn
                 >
             </v-stepper-content>
@@ -22,7 +24,7 @@
             <v-stepper-step step="2" complete>
                 Lade einen neuen QR-Code hoch
             </v-stepper-step>
-            <v-stepper-content step="2" ref="form">
+            <v-stepper-content step="2">
                 <v-image-input
                         v-model="imageData"
                         :image-quality="0.85"
@@ -40,14 +42,13 @@
                 Location
             </v-stepper-step>
 
-            <v-stepper-content step="3" ref="form">
+            <v-stepper-content step="3">
                 <v-text-field
                         name="location"
                         id="location"
                         label="Breitengrad"
                         outlined
                         :rules="locationRules"
-                        value="" required
                         v-model.number="latitude"
                         type="number"
                 ></v-text-field
@@ -82,30 +83,25 @@ export default {
     },
     data() {
         return {
-            success: false,
-            valid: true,
             currentStepperStep: 1,
-            name: '',
-            location: '',
+
+            name: null,
+            location: null,
+            isValid: true,
 
             nameRules: [
                v => !!v || 'Ein Name wird benötigt',
-                //v => (v && v.length <= 10 || 'Name must be less than...')
+
             ],
 
             locationRules: [
                 v => !!v || 'Location wird benötigt',
             ],
+
         };
     },
 
     methods: {
-       // currentStepperStep() {
-       //     if (this.$refs.form.validate()) {
-       //       console.debug('Validation success')
-       //       this.register()
-       //   }
-       // },
 
         uploadNewQRCode() {
             let imageUrl;
