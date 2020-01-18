@@ -14,7 +14,7 @@
                 v-for="qrCode in qrCodeLocations"
                 :key="qrCode.id"
             >
-                <v-card class="elevation-8 mx-auto">
+                <v-card class="elevation-8 mx-auto" :to="'/codes/' + qrCode.id">
                     <v-img
                         class="white--text align-end"
                         height="220px"
