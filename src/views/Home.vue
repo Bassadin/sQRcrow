@@ -15,27 +15,54 @@
                 ></v-img>
                 <v-divider></v-divider>
             </v-layout>
-            <v-layout justify-center>
-                <v-flex>
-                    <v-carousel
-                        cycle
-                        height="400"
-                        hide-delimiter-background
-                        show-arrows-on-hover
+            <v-layout row wrap justify-center ma-2>
+                <div class="grey lighten-4 pa-4">
+                    <v-row align="center" justify="center">
+                        <v-col cols=auto md=auto sm=auto>
+                            <v-card>
+                                <v-subheader class="subheader" >
+                                    <h2>Wie nutzt man diese App?</h2>
+                                </v-subheader>
+                                <v-list>
+                                    <template v-for="(item, index) in items">
+                                        <v-list-item
+                                            v-if="item.action"
+                                            :key="item.title"
+
+                                        >
+                                            <v-list-item-action>
+                                                <v-icon
+                                                    >{{ item.action }}</v-icon
+                                                >
+                                            </v-list-item-action>
+
+                                            <v-list-item-content>
+                                                <v-list-item-title
+                                                    >{{item.title}} </v-list-item-title
+                                                >
+                                            </v-list-item-content>
+                                        </v-list-item>
+                                        <v-divider
+                                                v-else-if="item.divider"
+                                                :key="index"
+                                        ></v-divider>
+                                    </template>
+                                </v-list>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                    <v-row
+                            class="mt-12"
+                            align="center"
+                            justify="center"
                     >
-                        <v-carousel-item v-for="(slide, i) in slides" :key="i">
-                            <v-sheet :color="colors[i]" height="100%">
-                                <v-row
-                                    class="fill-height"
-                                    align="center"
-                                    justify="center"
-                                >
-                                    <div class="display-3">{{ slide }}</div>
-                                </v-row>
-                            </v-sheet>
-                        </v-carousel-item>
-                    </v-carousel>
-                </v-flex>
+                        <v-col
+                                cols=auto
+                                md=auto
+                        >
+                        </v-col>
+                    </v-row>
+                </div>
             </v-layout>
             <v-layout row wrap justify-center ma-2>
                 <v-flex xs12 md6 lg4 xl3 ma-2>
@@ -109,38 +136,33 @@
 export default {
     data() {
         return {
-            colors: [
-                'red',
-                'yellow',
-                'magenta',
-                'green',
-                'orange',
-                'blue',
-                'purple',
-                'gray',
-                'cyan',
-                'dark green',
-                'black',
-                'silver',
-                'pink'
-            ],
-            slides: [
-                'Karten Funktion ist da!',
-                'Dummy QRCodes sind jetzt online!',
-                'Vergiss nicht, anzumelden!',
-                'Made in Germany!',
-                'Erstellt eure eigene QRCodes und ' + 'ladet sie hoch!',
-                'Noch mehr Funktionen unterwegs!',
-                'Geht raus und findet die QRCodes!',
-                'Die App ist gut für Entdecker!',
-                'Geben Sie uns bitte volle Punktzahl' + ' für dieses Projekt!',
-                'Wir sitzen hier so lang, ' +
-                    'unsere Rücken fangen an zu schmerzen',
-                'Quasi Geocaching lmao',
-                'Danke für eure Besuch!',
-                "Und jetzt auf geht's!"
+            items:[
+                {
+                    action: 'Erstellen',
+                    title: 'Deine eigene QRCodes bei uns!',
+                },
+                {
+                    divider: true,
+                },
+                {
+                    action: 'Kleben ',
+                    title: 'Wo immer du willst!'
+                },
+                {
+                    divider: true,
+                },
+                {
+                    action: 'Scannen',
+                    title: 'Dann bist du live bei uns!'
+                },
+                {
+                    action: 'Und?',
+                    title: 'Für Jeden in allem Alter!'
+                }
             ]
         };
     }
 };
 </script>
+<style scoped>
+</style>
