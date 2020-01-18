@@ -9,6 +9,7 @@ import TroubleShooting from '../views/TroubleShooting';
 import Codes from '../views/Codes';
 import AddQRCode from '../views/Add_QRCode';
 import Login from '../views/Login';
+import SingleCode from '../views/SingleCode';
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,10 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: Login
+    },
+    {
+        path: '/codes/:qrcodeid',
+        component: SingleCode
     }
 ];
 
