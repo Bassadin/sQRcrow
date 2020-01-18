@@ -11,7 +11,7 @@
                 <v-img
                     :src="require('../assets/logos/sQRcrow_logo.svg')"
                     contain
-                    height="200"
+                    height="30vh"
                 ></v-img>
             </v-layout>
             <v-layout justify-center>
