@@ -5,7 +5,12 @@
         </v-stepper-step>
 
         <v-stepper-content step="1">
-            <v-text-field label="Name" outlined v-model="name"></v-text-field>
+            <v-text-field
+                class="mt-1"
+                label="Name"
+                outlined
+                v-model="name"
+            ></v-text-field>
 
             <v-btn color="primary" @click="currentStepperStep = 2"
                 >Weiter</v-btn
@@ -51,14 +56,13 @@
                 @click="
                     currentStepperStep = 4;
                     uploadNewQRCode();
-                    snackbar = true;
                 "
                 >Fertig</v-btn
             >
 
             <v-btn text @click="currentStepperStep = 2">Zurück</v-btn>
-            <v-snackbar v-model="snackbar" :multi-line="multiLine">
-                {{ text }}
+            <v-snackbar v-model="snackbar" multi-line="true">
+                Erfolgreich hinzugefügt
                 <v-btn color="red" text @click="snackbar = false">
                     Erfolgreich hinzugefügt
                 </v-btn>
@@ -81,7 +85,8 @@ export default {
     },
     data() {
         return {
-            currentStepperStep: 1
+            currentStepperStep: 1,
+            snackbar: false
         };
     },
     methods: {
@@ -135,12 +140,10 @@ export default {
                         .doc(id)
                         .update({ image: imageUrl });
                 })
-                .then({
-                    data: () => ({
-                        multiLine: true,
-                        snackbar: false,
-                        text: 'Erfolgreich hinzugefügt'
-                    })
+                .then(() => {
+                    this.snackbar = true;
+                    //Navigate to new qr code after upload
+                    this.$router.push('/codes/' + id);
                 })
                 //Log any errors
                 .catch(error => {
