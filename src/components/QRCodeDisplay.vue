@@ -27,7 +27,6 @@ export default {
     },
     computed: {
         qrCodeUrl() {
-            console.log(this.qrCodeValue);
             return window.location.hostname + '/codes/' + this.qrCodeValue;
         }
     }
