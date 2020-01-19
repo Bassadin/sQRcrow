@@ -83,7 +83,7 @@
 </template>
 
 <script>
-var DetectRTC = require('detectrtc');
+// var DetectRTC = require('detectrtc');
 
 export default {
     props: {
@@ -157,7 +157,8 @@ export default {
             //TODO...
             // DetectRTC.load();
             // console.log(DetectRTC.hasWebcam);
-            return DetectRTC.hasWebcam;
+            // return DetectRTC.hasWebcam;
+            return true;
         }
     }
 };
