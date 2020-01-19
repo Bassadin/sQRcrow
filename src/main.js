@@ -38,6 +38,10 @@ import VueQrcodeReader from 'vue-qrcode-reader';
 Vue.use(VueQrcodeReader);
 Vue.config.productionTip = false;
 
+//QRCode display
+import VueQrcode from '@chenfengyuan/vue-qrcode';
+Vue.component(VueQrcode.name, VueQrcode);
+
 new Vue({
     router,
     store,

@@ -36,6 +36,7 @@
 
         <v-stepper-content step="3">
             <v-text-field
+                class="mt-1"
                 label="Breitengrad"
                 outlined
                 v-model="latitude"
@@ -104,6 +105,7 @@ export default {
                     id = data.id;
                     return id;
                 })
+                //Create the new qr code in firestore with the given data and upload the image
                 .then(id => {
                     var firebaseStorageRef = firebase
                         .storage()
@@ -114,12 +116,14 @@ export default {
                         'data_url'
                     );
                 })
+                //Get the image download link with token
                 .then(fileData => {
                     return firebase
                         .storage()
                         .ref(fileData.metadata.fullPath)
                         .getDownloadURL();
                 })
+                //Update the image field in the qr code data in firestore
                 .then(URL => {
                     imageUrl = URL;
                     return firebase
@@ -135,6 +139,7 @@ export default {
                         text: 'Erfolgreich hinzugefügt'
                     })
                 })
+                //Log any errors
                 .catch(error => {
                     console.log(error);
                 });

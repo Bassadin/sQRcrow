@@ -11,10 +11,31 @@
                 <v-img
                     :src="require('../assets/logos/sQRcrow_logo.svg')"
                     contain
-                    height="200"
+                    height="30vh"
                 ></v-img>
             </v-layout>
-
+            <v-layout justify-center>
+                <v-flex>
+                    <v-carousel
+                        cycle
+                        height="400"
+                        hide-delimiter-background
+                        show-arrows-on-hover
+                    >
+                        <v-carousel-item v-for="(slide, i) in slides" :key="i">
+                            <v-sheet :color="colors[i]" height="100%">
+                                <v-row
+                                    class="fill-height"
+                                    align="center"
+                                    justify="center"
+                                >
+                                    <div class="display-3">{{ slide }}</div>
+                                </v-row>
+                            </v-sheet>
+                        </v-carousel-item>
+                    </v-carousel>
+                </v-flex>
+            </v-layout>
             <v-layout row wrap justify-center ma-2>
                 <v-flex xs12 md6 lg4 xl3 ma-2>
                     <v-card
@@ -87,11 +108,38 @@
 export default {
     data() {
         return {
-            newsContent: {}
+            colors: [
+                'red',
+                'yellow',
+                'magenta',
+                'green',
+                'orange',
+                'blue',
+                'purple',
+                'gray',
+                'cyan',
+                'dark green',
+                'black',
+                'silver',
+                'pink'
+            ],
+            slides: [
+                'Karten Funktion ist da!',
+                'Dummy QRCodes sind jetzt online!',
+                'Vergiss nicht, anzumelden!',
+                'Made in Germany!',
+                'Erstellt eure eigene QRCodes und ' + 'ladet sie hoch!',
+                'Noch mehr Funktionen unterwegs!',
+                'Geht raus und findet die QRCodes!',
+                'Die App ist gut für Entdecker!',
+                'Geben Sie uns bitte volle Punktzahl' + ' für dieses Projekt!',
+                'Wir sitzen hier so lang, ' +
+                    'unsere Rücken fangen an zu schmerzen',
+                'Quasi Geocaching lmao',
+                'Danke für eure Besuch!',
+                "Und jetzt auf geht's!"
+            ]
         };
-    },
-    mounted() {
-        this.newsContent = require('../database/news');
     }
 };
 </script>

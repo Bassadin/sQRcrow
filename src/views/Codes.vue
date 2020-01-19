@@ -14,12 +14,13 @@
                 v-for="qrCode in qrCodeLocations"
                 :key="qrCode.id"
             >
-                <v-card class="elevation-8 mx-auto">
+                <v-card class="elevation-8 mx-auto" :to="'/codes/' + qrCode.id">
                     <v-img
                         class="white--text align-end"
-                        height="160px"
+                        height="220px"
                         gradient="to top, rgba(0, 0, 0, .63), rgba(0, 0, 0, 0)"
                         :src="qrCode.image"
+                        style="position:relative;"
                     >
                         <v-card-title class="headline" primary-title>
                             {{ qrCode.name }}
@@ -36,6 +37,7 @@
                                 ></v-progress-circular>
                             </v-row>
                         </template>
+                        <QRCodeDisplay :value="qrCode.id"></QRCodeDisplay>
                     </v-img>
 
                     <v-card-text>
@@ -58,6 +60,7 @@
 <script>
 //Firestore
 import { DB } from '../firebase/db';
+import QRCodeDisplay from '@/components/QRCodeDisplay';
 
 export default {
     name: 'codes',
@@ -65,6 +68,9 @@ export default {
         return {
             qrCodeLocations: []
         };
+    },
+    components: {
+        QRCodeDisplay
     },
     firestore: {
         qrCodeLocations: DB.collection('qr-codes')

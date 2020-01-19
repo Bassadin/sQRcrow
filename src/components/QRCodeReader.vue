@@ -37,13 +37,18 @@
 export default {
     name: 'QRCodeReader',
     data: () => ({
-        result: null,
+        decodedStringValue: null,
+        detectedQrCodeId: null,
         dialog: false,
         error: ''
     }),
     methods: {
         onDecode(decodedString) {
-            this.result = decodedString;
+            this.decodedStringValue = decodedString;
+            this.detectedQrCodeId = this.decodedStringValue.substr(
+                this.decodedStringValue.lastIndexOf('/') + 1
+            );
+            this.$router.push('/codes/' + this.detectedQrCodeId);
         },
         paintGreenText(location, ctx) {
             const {
@@ -68,10 +73,10 @@ export default {
 
             ctx.lineWidth = 3;
             ctx.strokeStyle = '#35495e';
-            ctx.strokeText(this.result, centerX, centerY);
+            ctx.strokeText(this.detectedQrCodeId, centerX, centerY);
 
             ctx.fillStyle = '#5cb984';
-            ctx.fillText(this.result, centerX, centerY);
+            ctx.fillText(this.detectedQrCodeId, centerX, centerY);
         },
         async onInit(promise) {
             try {
