@@ -62,7 +62,9 @@
 <script>
 import VImageInput from 'vuetify-image-input';
 
-import * as firebase from 'firebase';
+//Firestore
+const firebase = require('firebase/app');
+require('firebase/firestore');
 
 export default {
     name: 'Add-QRCode',
