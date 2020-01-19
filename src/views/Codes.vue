@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <div class="text-center">
-            <h1 id="header">Codes</h1>
+        <div class="text-center ma-5">
+            <h1 id="header">Alle Codes</h1>
         </div>
 
         <v-layout row wrap justify-center ma-2>
