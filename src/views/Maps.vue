@@ -31,7 +31,11 @@
                             :src="marker.image"
                             style="position: relative;"
                         >
-                            <v-card-title class="headline" primary-title>
+                            <v-card-title
+                                class="headline"
+                                primary-title
+                                style="word-wrap: break-word; word-break: normal;"
+                            >
                                 {{ marker.name }}
                             </v-card-title>
                             <template v-slot:placeholder>
@@ -122,13 +126,13 @@ export default {
                 case 'xs':
                     return '230px';
                 case 'sm':
-                    return '250px';
+                    return '240px';
                 case 'md':
-                    return '300px';
+                    return '260px';
                 case 'lg':
-                    return '320px';
+                    return '290px';
                 case 'xl':
-                    return '350px';
+                    return '320px';
             }
             return '0';
         }
