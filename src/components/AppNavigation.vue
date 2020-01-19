@@ -128,11 +128,15 @@ export default {
                 text: 'Map',
                 to: '/maps'
             });
-            mainPagesToAdd.push({
-                icon: 'mdi-qrcode',
-                text: 'Add QR-Code',
-                to: '/Add_QRCode'
-            });
+
+            if (this.userIsAuthenticated) {
+                mainPagesToAdd.push({
+                    icon: 'mdi-qrcode',
+                    text: 'Add QR-Code',
+                    to: '/Add_QRCode'
+                });
+            }
+
             mainPagesToAdd.push({
                 icon: 'mdi-qrcode',
                 text: 'Codes',
