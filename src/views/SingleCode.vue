@@ -22,107 +22,106 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-        <v-container bg fill-height>
-            <v-layout column wrap align-center>
-                <v-flex v-if="this.qrCodeData">
-                    <v-card class="mx-auto ma-4" elevation="10" dark>
-                        <v-img
-                            :src="qrCodeData.image"
-                            cover
-                            max-height="40vh"
-                            class="white--text align-end"
-                            style="position:relative;"
+
+        <v-layout row wrap justify-center ma-8>
+            <v-flex xs12 md6 lg6 xl6 ma-3>
+                <v-card class="mx-auto" elevation="10" dark>
+                    <v-img
+                        :src="qrCodeData.image"
+                        cover
+                        max-height="40vh"
+                        class="white--text align-end"
+                        style="position:relative;"
+                    >
+                        <template v-slot:placeholder>
+                            <v-row
+                                class="fill-height ma-0"
+                                align="center"
+                                justify="center"
+                            >
+                                <v-progress-circular
+                                    indeterminate
+                                    color="grey lighten-5"
+                                ></v-progress-circular>
+                            </v-row> </template
+                        ><QRCodeDisplay
+                            :qrCodeValue="qrCodeId"
+                            :displayWidth="130"
+                        ></QRCodeDisplay
+                    ></v-img>
+                    <v-card-title class="headline" primary-title>
+                        <v-icon left>mdi-qrcode</v-icon>
+                        {{ this.qrCodeData.name }}
+                    </v-card-title>
+
+                    <v-card-text>
+                        <v-chip color="green" text-color="white">
+                            <v-icon left>mdi-upload</v-icon>
+                            {{
+                                new Date(
+                                    qrCodeData.creationTimestamp.seconds * 1000
+                                ).toLocaleDateString()
+                            }}
+                        </v-chip>
+                        <v-chip
+                            color="yellow"
+                            text-color="grey darken-4"
+                            class="ml-3"
                         >
-                            <template v-slot:placeholder>
-                                <v-row
-                                    class="fill-height ma-0"
-                                    align="center"
-                                    justify="center"
-                                >
-                                    <v-progress-circular
-                                        indeterminate
-                                        color="grey lighten-5"
-                                    ></v-progress-circular>
-                                </v-row> </template
-                            ><QRCodeDisplay
-                                :qrCodeValue="qrCodeId"
-                                :displayWidth="130"
-                            ></QRCodeDisplay
-                        ></v-img>
-                        <v-card-title class="headline" primary-title>
-                            <v-icon left>mdi-qrcode</v-icon>
-                            {{ this.qrCodeData.name }}
-                        </v-card-title>
+                            <v-icon left>mdi-star</v-icon>
+                            {{ qrCodeRatingValue }}
+                        </v-chip>
+                    </v-card-text>
+                    <v-flex v-if="this.userIsAuthenticated">
+                        <v-divider dark></v-divider>
+                        <v-card-actions class="pa-4">
+                            Bewerten
+                            <v-spacer></v-spacer>
+                            <v-rating
+                                v-model="qrCodeRatingValue"
+                                @input="ratingChanged"
+                                background-color="white"
+                                color="yellow accent-4"
+                                dense
+                                half-increments
+                                hover
+                                size="24"
+                            ></v-rating>
+                        </v-card-actions>
+                    </v-flex>
+                </v-card>
+            </v-flex>
+            <v-flex xs12 md6 lg6 xl6 ma-3>
+                <v-card class="mx-auto" elevation="3" outlined>
+                    <v-card-title class="headline" primary-title>
+                        Location
+                    </v-card-title>
+                    <v-card-text>
+                        <l-map
+                            ref="myMap"
+                            :zoom="15"
+                            :center="markerLocation"
+                            :options="{
+                                zoomSnap: 0.2
+                            }"
+                            style="width:100%; height:500px"
+                            :max-bounds="bounds"
+                        >
+                            <l-tile-layer
+                                url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+                                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                            ></l-tile-layer>
 
-                        <v-card-text>
-                            <v-chip color="green" text-color="white">
-                                <v-icon left>mdi-upload</v-icon>
-                                {{
-                                    new Date(
-                                        qrCodeData.creationTimestamp.seconds *
-                                            1000
-                                    ).toLocaleDateString()
-                                }}
-                            </v-chip>
-                            <v-chip
-                                color="yellow"
-                                text-color="grey darken-4"
-                                class="ml-3"
+                            <l-marker
+                                :icon="qrCodeLocationIcon"
+                                :lat-lng="markerLocation"
                             >
-                                <v-icon left>mdi-star</v-icon>
-                                {{ qrCodeRatingValue }}
-                            </v-chip>
-                        </v-card-text>
-                        <v-flex v-if="this.userIsAuthenticated">
-                            <v-divider dark></v-divider>
-                            <v-card-actions class="pa-4">
-                                Bewerten
-                                <v-spacer></v-spacer>
-                                <v-rating
-                                    v-model="qrCodeRatingValue"
-                                    @input="ratingChanged"
-                                    background-color="white"
-                                    color="yellow accent-4"
-                                    dense
-                                    half-increments
-                                    hover
-                                    size="24"
-                                ></v-rating>
-                            </v-card-actions>
-                        </v-flex>
-                    </v-card>
-
-                    <v-card class="mx-auto ma-4" elevation="3" outlined>
-                        <v-card-title class="headline" primary-title>
-                            Location
-                        </v-card-title>
-                        <v-card-text>
-                            <l-map
-                                ref="myMap"
-                                :zoom="15"
-                                :center="markerLocation"
-                                :options="{
-                                    zoomSnap: 0.2
-                                }"
-                                style="width:700px; height:400px"
-                                :max-bounds="bounds"
-                            >
-                                <l-tile-layer
-                                    url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-                                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                ></l-tile-layer>
-
-                                <l-marker
-                                    :icon="qrCodeLocationIcon"
-                                    :lat-lng="markerLocation"
-                                >
-                                </l-marker>
-                            </l-map>
-                        </v-card-text>
-                    </v-card>
-                </v-flex>
-            </v-layout>
-        </v-container>
+                            </l-marker>
+                        </l-map>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
     </div>
 </template>
 
@@ -130,15 +129,12 @@
 //Firestore
 const firebase = require('firebase/app');
 require('firebase/firestore');
-
 //QRCode display
 import QRCodeDisplay from '@/components/QRCodeDisplay';
-
 //Maps
 import * as Leaflet from 'leaflet';
 import { latLngBounds } from 'leaflet';
 import { LMap, LMarker, LTileLayer } from 'vue2-leaflet';
-
 export default {
     name: 'SingleCode',
     data: () => ({
@@ -222,7 +218,6 @@ export default {
                             snapshot.docs[0].ref.update({
                                 rating: newRating
                             });
-
                             this.updateRating();
                         }
                     });
@@ -232,13 +227,11 @@ export default {
             let firestoreCollection = firebase
                 .firestore()
                 .collection('ratings');
-
             let firestoreQuery = firestoreCollection.where(
                 'qrCodeId',
                 '==',
                 this.qrCodeId
             );
-
             firestoreQuery
                 .get()
                 .then(querySnapshot => {
@@ -247,7 +240,6 @@ export default {
                     } else {
                         let ratingsSum = 0;
                         let ratingsAmountCounter = 0;
-
                         querySnapshot.forEach(doc => {
                             ratingsSum += doc.data().rating;
                             ratingsAmountCounter++;
