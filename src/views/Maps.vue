@@ -46,7 +46,9 @@
                                     ></v-progress-circular>
                                 </v-row>
                             </template>
-                            <QRCodeDisplay :value="marker.id"></QRCodeDisplay>
+                            <QRCodeDisplay
+                                :qrCodeValue="marker.id"
+                            ></QRCodeDisplay>
                         </v-img>
                         <v-card-text>
                             <strong>Upload-Datum:</strong><br />
