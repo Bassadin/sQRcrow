@@ -20,7 +20,10 @@
                 :icon="qrCodeLocationIcon"
             >
                 <l-popup :style="'width: ' + popupWidth">
-                    <v-card style="width:95%; height:100%;">
+                    <v-card
+                        style="width:95%; height:100%;"
+                        :to="'/codes/' + marker.id"
+                    >
                         <v-img
                             class="white--text align-end"
                             height="165px"
