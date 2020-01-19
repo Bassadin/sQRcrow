@@ -11,6 +11,8 @@ import AddQRCode from '../views/Add_QRCode';
 import Login from '../views/Login';
 import SingleCode from '../views/SingleCode';
 
+import store from '../store';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -52,7 +54,14 @@ const routes = [
     {
         path: '/Add_QRCode',
         name: 'Add_QRCode',
-        component: AddQRCode
+        component: AddQRCode,
+        beforeEnter: (to, from, next) => {
+            if (store.getters.isLoggedIn == false) {
+                next('/');
+            } else {
+                next();
+            }
+        }
     },
     {
         path: '/login',
