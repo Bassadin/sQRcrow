@@ -96,7 +96,8 @@ export default {
                     latitude: this.latitude, //Debug data for now
                     longitude: this.longitude
                 },
-                image: 'abc'
+                image: 'abc',
+                uploader: this.$store.getters.user.id
             };
 
             firebase
