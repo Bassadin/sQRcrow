@@ -51,10 +51,18 @@
                 @click="
                     currentStepperStep = 4;
                     uploadNewQRCode();
+                    snackbar = true;
                 "
                 >Fertig</v-btn
             >
+
             <v-btn text @click="currentStepperStep = 2">Zurück</v-btn>
+            <v-snackbar v-model="snackbar" :multi-line="multiLine">
+                {{ text }}
+                <v-btn color="red" text @click="snackbar = false">
+                    Erfolgreich hinzugefügt
+                </v-btn>
+            </v-snackbar>
         </v-stepper-content>
     </v-stepper>
 </template>
@@ -123,6 +131,13 @@ export default {
                         .collection('qr-codes')
                         .doc(id)
                         .update({ image: imageUrl });
+                })
+                .then({
+                    data: () => ({
+                        multiLine: true,
+                        snackbar: false,
+                        text: 'Erfolgreich hinzugefügt'
+                    })
                 })
                 //Log any errors
                 .catch(error => {
