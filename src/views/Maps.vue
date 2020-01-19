@@ -20,7 +20,10 @@
                 :icon="qrCodeLocationIcon"
             >
                 <l-popup :style="'width: ' + popupWidth">
-                    <v-card style="width:95%; height:100%;">
+                    <v-card
+                        style="width:95%; height:100%;"
+                        :to="'/codes/' + marker.id"
+                    >
                         <v-img
                             class="white--text align-end"
                             height="165px"
@@ -43,7 +46,9 @@
                                     ></v-progress-circular>
                                 </v-row>
                             </template>
-                            <QRCodeDisplay :value="marker.id"></QRCodeDisplay>
+                            <QRCodeDisplay
+                                :qrCodeValue="marker.id"
+                            ></QRCodeDisplay>
                         </v-img>
                         <v-card-text>
                             <strong>Upload-Datum:</strong><br />

@@ -75,6 +75,7 @@
             right
             class="fab-button"
             to="/QR_Reader"
+            v-if="this.hasWebcam() == true"
         >
             <v-icon>mdi-qrcode</v-icon>
         </v-btn>
@@ -82,19 +83,14 @@
 </template>
 
 <script>
+// var DetectRTC = require('detectrtc');
+
 export default {
     props: {
         source: String
     },
     data: () => ({
         drawer: null,
-        mainPages: [
-            { icon: 'mdi-home', text: 'Home', to: '/' },
-            { icon: 'mdi-qrcode-scan', text: 'QR-Scanner', to: '/QR_Reader' },
-            { icon: 'mdi-map-search', text: 'Map', to: '/maps' },
-            { icon: 'mdi-qrcode', text: 'Add QR-Code', to: '/Add_QRCode' },
-            { icon: 'mdi-qrcode', text: 'Codes', to: '/codes' }
-        ],
         lowerPages: [
             {
                 icon: 'mdi-information-outline',
@@ -113,6 +109,37 @@ export default {
         },
         user() {
             return this.$store.getters.user;
+        },
+        mainPages() {
+            let mainPagesToAdd = [];
+
+            mainPagesToAdd.push({ icon: 'mdi-home', text: 'Home', to: '/' });
+
+            if (this.hasWebcam()) {
+                mainPagesToAdd.push({
+                    icon: 'mdi-qrcode-scan',
+                    text: 'QR-Scanner',
+                    to: '/QR_Reader'
+                });
+            }
+
+            mainPagesToAdd.push({
+                icon: 'mdi-map-search',
+                text: 'Map',
+                to: '/maps'
+            });
+            mainPagesToAdd.push({
+                icon: 'mdi-qrcode',
+                text: 'Add QR-Code',
+                to: '/Add_QRCode'
+            });
+            mainPagesToAdd.push({
+                icon: 'mdi-qrcode',
+                text: 'Codes',
+                to: '/codes'
+            });
+
+            return mainPagesToAdd;
         }
     },
     watch: {
@@ -125,6 +152,13 @@ export default {
     methods: {
         logout() {
             this.$store.dispatch('logoutUser');
+        },
+        hasWebcam() {
+            //TODO...
+            // DetectRTC.load();
+            // console.log(DetectRTC.hasWebcam);
+            // return DetectRTC.hasWebcam;
+            return true;
         }
     }
 };

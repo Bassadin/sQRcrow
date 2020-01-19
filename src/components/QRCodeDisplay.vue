@@ -2,9 +2,9 @@
     <div id="QRCodeDisplay">
         <qrcode
             style="border-radius:10%;position:absolute;top: 5px; right: 5px;"
-            :value="value"
+            :value="this.qrCodeUrl"
             :options="{
-                width: 75,
+                width: displayWidth,
                 margin: 3,
                 color: {
                     light: 'FDF8E5FF',
@@ -18,6 +18,18 @@
 <script>
 export default {
     name: 'QRCodeDisplay',
-    props: ['value']
+    props: {
+        qrCodeValue: { type: String, required: true },
+        displayWidth: {
+            type: Number,
+            default: 75
+        }
+    },
+    computed: {
+        qrCodeUrl() {
+            console.log(this.qrCodeValue);
+            return window.location.hostname + '/codes/' + this.qrCodeValue;
+        }
+    }
 };
 </script>

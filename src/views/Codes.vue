@@ -37,7 +37,7 @@
                                 ></v-progress-circular>
                             </v-row>
                         </template>
-                        <QRCodeDisplay :value="qrCode.id"></QRCodeDisplay>
+                        <QRCodeDisplay :qrCodeValue="qrCode.id"></QRCodeDisplay>
                     </v-img>
 
                     <v-card-text>
