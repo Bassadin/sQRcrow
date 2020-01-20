@@ -103,7 +103,7 @@ export default {
                 iconSize: [32, 32],
                 iconAnchor: [16, 0]
             }),
-            zoom: 14,
+            zoom: 15,
             center: { lat: 48.05162, lng: 8.20798 },
             url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
             attribution:
