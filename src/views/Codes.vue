@@ -14,10 +14,14 @@
                 v-for="qrCode in qrCodeLocations"
                 :key="qrCode.id"
             >
-                <v-card class="elevation-8 mx-auto" :to="'/codes/' + qrCode.id">
+                <v-card
+                    class="elevation-8 mx-auto"
+                    :to="'/codes/' + qrCode.id"
+                    dark
+                >
                     <v-img
                         class="white--text align-end"
-                        height="220px"
+                        height="250px"
                         gradient="to top, rgba(0, 0, 0, .63), rgba(0, 0, 0, 0)"
                         :src="qrCode.image"
                         style="position:relative;"
@@ -37,19 +41,21 @@
                                 ></v-progress-circular>
                             </v-row>
                         </template>
-                        <QRCodeDisplay :qrCodeValue="qrCode.id"></QRCodeDisplay>
+                        <QRCodeDisplay
+                            :qrCodeValue="qrCode.id"
+                            :displayWidth="120"
+                        ></QRCodeDisplay>
                     </v-img>
 
                     <v-card-text>
-                        <p>
-                            Upload-Datum:
+                        <v-chip color="green" text-color="white">
+                            <v-icon left>mdi-upload</v-icon>
                             {{
                                 new Date(
                                     qrCode.creationTimestamp.seconds * 1000
                                 ).toLocaleDateString()
                             }}
-                        </p>
-                        <p>{{ qrCode.location }}</p>
+                        </v-chip>
                     </v-card-text>
                 </v-card>
             </v-flex>
