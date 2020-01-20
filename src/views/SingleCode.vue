@@ -23,7 +23,7 @@
             </v-card>
         </v-dialog>
 
-        <v-layout row wrap justify-center ma-8>
+        <v-layout row wrap justify-center ma-8 v-if="qrCodeData">
             <v-flex xs12 md6 lg6 xl6 ma-3>
                 <v-card class="mx-auto" elevation="10" dark>
                     <v-img
