@@ -46,7 +46,7 @@
                             </v-row> </template
                         ><QRCodeDisplay
                             :qrCodeValue="qrCodeId"
-                            :displayWidth="130"
+                            :displayWidth="160"
                         ></QRCodeDisplay
                     ></v-img>
                     <v-card-title class="headline" primary-title>
