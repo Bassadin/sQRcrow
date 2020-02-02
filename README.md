@@ -1,6 +1,6 @@
 # gamma
 
-[![Actions Status](https://github.com/VADS/gamma/workflows/Firebase%20Hosting/badge.svg)](https://github.com/hfu-gis/gamma/actions)
+[![Actions Status](https://github.com/VADS/gamma/workflows/Firebase%20Hosting/badge.svg)](https://github.com/VADS/gamma/actions)
 
 ## Project setup
 ```
